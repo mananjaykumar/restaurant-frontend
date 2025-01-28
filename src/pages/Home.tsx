@@ -1,4 +1,3 @@
-import React from "react";
 import { Stack } from "@mui/material";
 import Banner from "../components/Home/Banner";
 import MostLoved from "../components/Home/MostLoved";

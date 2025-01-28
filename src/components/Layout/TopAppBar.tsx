@@ -224,7 +224,7 @@ function TopAppBar() {
                     {MenuData.map((item, index) => (
                       <MenuItem
                         key={item.name}
-                        onClick={(e) => {
+                        onClick={() => {
                           if (index === MenuData.length - 1) {
                             if (
                               userData?.token &&

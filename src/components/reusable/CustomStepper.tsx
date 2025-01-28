@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect } from "react";
 import {
   Box,
   Stepper,
@@ -42,22 +41,28 @@ export default function CustomStepper(props: {
     }>
   >;
 }) {
-  const { map, activeStep, setActiveStep, completed, setCompleted } = props;
+  const {
+    map,
+    activeStep,
+    // setActiveStep,
+    // completed,
+    // setCompleted
+  } = props;
   //   const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+  // const handleNext = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  // };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  // const handleBack = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  // };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
-  const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
+  const ColorlibConnector = styled(StepConnector)(({}) => ({
     // [`&.${stepConnectorClasses.alternativeLabel}`]: {
     //   top: 22,
     // },
@@ -82,7 +87,7 @@ export default function CustomStepper(props: {
 
   const StepIconRoot = styled("div")<{
     ownerState: { active?: boolean; completed?: boolean };
-  }>(({ theme, ownerState }) => ({
+  }>(({ ownerState }) => ({
     backgroundColor: "#fff",
     // border: `1px solid ${theme.palette.primary.main}`,
     // color: theme.palette.primary.main,
@@ -138,7 +143,7 @@ export default function CustomStepper(props: {
         orientation="vertical"
         connector={<ColorlibConnector />}
       >
-        {Object.values(map)?.map((step, index) => (
+        {Object.values(map)?.map((step) => (
           <Step key={step.label}>
             <StepLabel StepIconComponent={StepIcon}>
               <Typography fontSize="1rem" fontWeight={500}>

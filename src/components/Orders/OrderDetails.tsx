@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, CircularProgress, Stack, Typography } from "@mui/material";
 import CustomStepper from "../reusable/CustomStepper";
@@ -126,7 +126,7 @@ const OrderDetails = () => {
         }));
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setMapData({
           NOT_FOUND: {
             step: 0,

@@ -26,7 +26,7 @@ import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 // import { useGetUserRole } from 'hooks/useGetUserRole';
 // import { PoweredBy } from "components/Layout/icons";
 // import { MuiHtmlTooltip } from "components/reusable/MuiHTMLToolTip";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+// import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 // import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import theme from "../../theme";
 // import { ErrorComp } from './ErrorComp';
@@ -139,18 +139,18 @@ export const CommonTable = (props: ITable) => {
     autoSuggestApprove,
     fromFacetsCuration,
     fromModelConfiguration,
-    hideLogo = false,
+    // hideLogo = false,
     sx = {},
     rowsPerPageOptions = [25, 50, 75],
     headerColor,
-    handleDrag,
+    // handleDrag,
     showDragIndicator,
-    fromOnboardingFlow,
-    ifPageEqualZero,
+    // fromOnboardingFlow,
+    // ifPageEqualZero,
     isItFromConfigAutoSuggest,
-    width,
+    // width,
     isFromFacetOnboarding,
-    isPaginationNotNeeded,
+    // isPaginationNotNeeded,
   } = props;
   const classes = useStyles(theme);
   const page = info?.meta?.pagination?.page || 1;

@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import AdminLogin from "./AdminAuth/AdminLogin";
 import { Navigate } from "react-router-dom";

@@ -21,7 +21,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
-import theme from "../../theme";
+// import theme from "../../theme";
 // import FormControlLabel from "@mui/material/FormControlLabel";
 // import Switch from "@mui/material/Switch";
 
@@ -276,11 +276,11 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = React.useState<keyof Data>("calories");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
+  // const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
+    _: React.MouseEvent<unknown>,
     property: keyof Data
   ) => {
     const isAsc = orderBy === property && order === "asc";
@@ -297,7 +297,7 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
+  const handleClick = (_: React.MouseEvent<unknown>, name: string) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected: readonly string[] = [];
 
@@ -317,7 +317,7 @@ export default function EnhancedTable() {
     setSelected(newSelected);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
   };
 
@@ -328,9 +328,9 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  const handleChangeDense = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDense(event.target.checked);
-  };
+  // const handleChangeDense = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setDense(event.target.checked);
+  // };
 
   const isSelected = (name: string) => selected.indexOf(name) !== -1;
 
@@ -361,7 +361,8 @@ export default function EnhancedTable() {
               height: "100%",
             }}
             aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
+            // size={dense ? "small" : "medium"}
+            size="small"
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -414,7 +415,8 @@ export default function EnhancedTable() {
               {emptyRows > 0 && (
                 <TableRow
                   style={{
-                    height: (dense ? 33 : 53) * emptyRows,
+                    // height: (dense ? 33 : 53) * emptyRows,
+                    height: 33 * emptyRows,
                   }}
                 >
                   <TableCell colSpan={6} />

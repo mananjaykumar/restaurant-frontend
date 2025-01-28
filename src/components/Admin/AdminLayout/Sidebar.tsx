@@ -36,7 +36,7 @@ import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import AddIcon from "@mui/icons-material/Add";
 import ReorderOutlinedIcon from "@mui/icons-material/ReorderOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import * as navLinks from "../../../routes/constants";
 import { AppBar } from "./AppBar";
 import LoadingBar from "react-top-loading-bar";
@@ -435,7 +435,7 @@ const MenuButton = (props: any) => {
             component="div"
             sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
           >
-            {item.items.map((it: any, index: number) => (
+            {item.items.map((it: any) => (
               <ListItemButton
                 key={it.label}
                 selected={location.pathname === it.link}
@@ -524,7 +524,7 @@ export default function Sidebar({ children }: ISidebar) {
     },
   ]);
 
-  const handleCollapse = (item: any, index?: any) => {
+  const handleCollapse = (_: any, index?: any) => {
     setSidebarItems((prev: any) => {
       const newSidebarItems = [...prev];
       newSidebarItems[index] = {

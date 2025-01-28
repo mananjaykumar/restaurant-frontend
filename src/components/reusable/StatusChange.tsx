@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Select, SelectChangeEvent, MenuItem } from "@mui/material";
 import theme from "../../theme";
 import axios from "axios";

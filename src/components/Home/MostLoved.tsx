@@ -3,8 +3,7 @@ import axios from "axios";
 import { Box, Stack, Typography } from "@mui/material";
 // import BoltIcon from "@mui/icons-material/Bolt";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import React from "react";
-import CustomCarousel from "../reusable/CustomCarousel.jsx";
+import CustomCarousel from "../reusable/CustomCarousel";
 import CustomCard from "../reusable/CustomCard";
 import toast from "react-hot-toast";
 import AOS from "aos";
@@ -124,7 +123,7 @@ interface ISectionHeader {
   Icon: any;
 }
 
-const SectionHeader = ({ title, Icon, headerSize }: ISectionHeader) => {
+const SectionHeader = ({ title, Icon }: ISectionHeader) => {
   return (
     <Box
       display="flex"
