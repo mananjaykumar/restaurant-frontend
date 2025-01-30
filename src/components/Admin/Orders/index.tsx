@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Stack, TableCell, TableRow, Typography } from "@mui/material";
+import { Stack, TableCell, TableRow, Tooltip, Typography } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -9,16 +9,24 @@ import { Shimmer, tableBorderStyles } from "../../reusable/Shimmer";
 import { CommonMenu } from "../../reusable/CommonMenu";
 import StatusChange from "../../reusable/StatusChange";
 import { socket } from "../../../socket";
-import SearchInput from "../../reusable/SearchInput";
+// import SearchInput from "../../reusable/SearchInput";
 import { Debounce } from "../../../utils/Debounce";
 import { useDispatch } from "react-redux";
 import { setProgress } from "../../../store/slices/ProgressSlice";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { AutocompleteInput } from "../../reusable/AutoCompleteInput";
 // import NewCommonTable from "../../reusable/NewCommonTable";
 
 export interface IDateRangeData {
   startDate: Dayjs | null;
   endDate: Dayjs | null;
   pastDate: string;
+}
+
+interface CopyState {
+  value: string;
+  copied: boolean;
 }
 
 const AdminOrders = () => {
@@ -37,6 +45,12 @@ const AdminOrders = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const [fieldId, setFieldId] = useState("");
+  const [copyState, setCopyState] = useState<CopyState>({
+    value: "",
+    copied: false,
+  });
+
+  console.log("copyState", copyState);
 
   // console.log("dateRangeData", dateRangeData);
 
@@ -86,8 +100,8 @@ const AdminOrders = () => {
   const handleApiCall = (postObj?: any) => {
     dispatch(setProgress({ progress: 10 }));
     const obj = {
-      startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
-      endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
+      // startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
+      // endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
       page,
       rowsPerPage,
       ...postObj,
@@ -226,9 +240,11 @@ const AdminOrders = () => {
       startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
       endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
     };
-    if (isSearchTextAdded) {
+    if (searchText) {
       const ob1 = {
-        ...ob,
+        // ...ob,
+        page: page,
+        rowsPerPage: rowsPerPage,
         search: searchText,
       };
       call({ ...ob1 });
@@ -254,6 +270,8 @@ const AdminOrders = () => {
     });
   }, [socket]);
 
+  console.log("searchText", searchText);
+
   return (
     <Stack gap={1} direction="column">
       {/* <Stack alignSelf="flex-end">
@@ -262,13 +280,20 @@ const AdminOrders = () => {
           setDateRangeData={setDateRangeData}
         />
       </Stack> */}
-      <Stack direction="row" justifyContent="space-between">
-        <Stack>
-          <SearchInput
+      <Stack direction="row" justifyContent="space-between" flexWrap="wrap">
+        <Stack width="25%">
+          {/* <SearchInput
             changeAction={handleSearchText}
             searchValue={searchText}
             placeholder="Search by Order Id"
-            disabled={true}
+            disabled={false}
+          /> */}
+          <AutocompleteInput
+            inputValue={searchText}
+            setInputValue={setSearchText}
+            onClear={() => {}}
+            attributes={[]}
+            width="300px"
           />
         </Stack>
         <Stack>
@@ -306,7 +331,37 @@ const AdminOrders = () => {
               };
               return (
                 <TableRow key={order?._id} sx={{ ...tableBorderStyles }}>
-                  <TableCell>{order?._id}</TableCell>
+                  <TableCell>
+                    <Stack
+                      sx={{
+                        display: "flex",
+                        gap: "0.5rem",
+                        flexDirection: "row",
+                        alignIems: "center",
+                      }}
+                    >
+                      <CopyToClipboard
+                        text={order?._id}
+                        onCopy={() => {
+                          setCopyState({
+                            value: order?._id,
+                            copied: true,
+                          });
+                        }}
+                      >
+                        <Tooltip
+                          title={
+                            copyState?.value === order?._id
+                              ? "Copied"
+                              : "Copy To Clipboard"
+                          }
+                        >
+                          <ContentCopyIcon />
+                        </Tooltip>
+                      </CopyToClipboard>
+                      <Typography>{order?._id}</Typography>
+                    </Stack>
+                  </TableCell>
                   <TableCell>
                     {order.products?.length > 0 ? (
                       order?.products.map(
