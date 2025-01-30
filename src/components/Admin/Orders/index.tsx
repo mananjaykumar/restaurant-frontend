@@ -40,7 +40,7 @@ const AdminOrders = () => {
   const [orders, setOrders] = useState<any>([]);
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const [isSearchTextAdded, setIsSearchTextAdded] = useState(false);
+  // const [isSearchTextAdded, setIsSearchTextAdded] = useState(false);
   const [page, setPage] = useState(1);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
@@ -54,10 +54,10 @@ const AdminOrders = () => {
 
   // console.log("dateRangeData", dateRangeData);
 
-  const handleSearchText = (inputText: React.SetStateAction<string>) => {
-    setSearchText(inputText);
-    setIsSearchTextAdded(true);
-  };
+  // const handleSearchText = (inputText: React.SetStateAction<string>) => {
+  //   setSearchText(inputText);
+  //   setIsSearchTextAdded(true);
+  // };
   const handleChangePage = (_event: unknown, newPage: number) => {
     const _newPage = newPage + 1;
     setPage(_newPage);
