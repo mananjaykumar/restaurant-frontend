@@ -50,8 +50,6 @@ const AdminOrders = () => {
     copied: false,
   });
 
-  console.log("copyState", copyState);
-
   // console.log("dateRangeData", dateRangeData);
 
   // const handleSearchText = (inputText: React.SetStateAction<string>) => {
@@ -243,7 +241,7 @@ const AdminOrders = () => {
     if (searchText) {
       const ob1 = {
         // ...ob,
-        page: page,
+        page: 1,
         rowsPerPage: rowsPerPage,
         search: searchText,
       };
@@ -270,8 +268,6 @@ const AdminOrders = () => {
     });
   }, [socket]);
 
-  console.log("searchText", searchText);
-
   return (
     <Stack gap={1} direction="column">
       {/* <Stack alignSelf="flex-end">
@@ -291,6 +287,7 @@ const AdminOrders = () => {
           <AutocompleteInput
             inputValue={searchText}
             setInputValue={setSearchText}
+            placeHolder="Search by Order Id"
             onClear={() => {}}
             attributes={[]}
             width="300px"
