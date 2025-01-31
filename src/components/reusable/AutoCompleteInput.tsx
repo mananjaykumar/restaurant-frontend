@@ -53,9 +53,6 @@ interface IAutocompleteInputProps {
   onClear: () => void;
   attributes: any[];
   placeHolder?: string;
-  attributeType?: string;
-  paramAttribute?: any;
-  suggestionType?: "schema" | "computed" | "audience" | "grouping";
   handlePosnChange?: () => void;
   width?: string;
 }
@@ -65,20 +62,13 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
     inputValue,
     setInputValue,
     onClear,
-    attributes,
     placeHolder,
-    // attributeType,
-    // paramAttribute = {},
-    // suggestionType,
     handlePosnChange,
     width,
   } = props;
   const classes = useStyles(theme);
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState<boolean>(true);
-  //   const { getSearchSchemaSuggestions } = useSelector(
-  //     (state: StoreType) => state.schemaAttributesReducer
-  //   );
   const [searchData, setSearchData] = useState<any>([]);
   const [filteredData, setFilteredData] = useState<any>([]);
 
@@ -95,6 +85,9 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
         // Reset to original options when the input is cleared
         setFilteredData(searchData);
       }
+    } else {
+      // Reset to original options when the input is cleared
+      setFilteredData(searchData);
     }
   }, [searchText, searchData]);
 
@@ -102,51 +95,26 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/orders/id`)
       .then((res) => {
-        setSearchData(res?.data?.data);
-        setFilteredData(res?.data?.data);
-        setLoading(false);
+        setTimeout(() => {
+          setSearchData(res?.data?.data);
+          setFilteredData(res?.data?.data);
+          setLoading(false);
+        }, 1000);
       })
       .catch((err) => {
         toast.error(err.message);
         setLoading(false);
       });
-    // dispatch(
-    //   schemaAttributesDataAction(GET_SEARCH_SCHEMA_SUGGESTIONS, {
-    //     params: fetchData,
-    //   })
-    // );
   };
 
   useEffect(() => {
     handleApiCall();
-    // handleApiCall({
-    //   ...(attributeType
-    //     ? {
-    //         [attributeType]: true,
-    //         ...paramAttribute,
-    //       }
-    //     : {
-    //         ...paramAttribute,
-    //       }),
-    //   ...(suggestionType ? { suggestion: suggestionType } : {}),
-    // });
   }, []);
-
-  //   useEffect(() => {
-  //     if (getSearchSchemaSuggestions.loaded) {
-  //       setSearchData(getSearchSchemaSuggestions?.data?.data);
-  //     }
-  //   }, [getSearchSchemaSuggestions]);
-
-  console.log("inputValue", inputValue);
-  console.log("searchText", searchText);
-  console.log("searchData", searchData);
-  console.log("loading", loading);
 
   return (
     <>
       <Autocomplete
-        disableClearable
+        // disableClearable
         classes={{
           listbox: classes.listbox,
           option: classes.option,
@@ -168,31 +136,9 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
           }
         }}
         options={
-          //   getSearchSchemaSuggestions?.loaded && searchData?.length > 0
-          //     ? searchData?.reduce((acc: any, item: any) => {
-          //         if (
-          //           !attributes.find(
-          //             (attribute) => attribute?.name === item?.name
-          //           )
-          //         ) {
-          //           acc.push(item.name);
-          //         }
-          //         return acc;
-          //       }, [])
-          //     : []
           loading ? [] : filteredData // Show empty options while loading
         }
         noOptionsText={
-          //   getSearchSchemaSuggestions.loaded && searchData?.length === 0 ? (
-          //     "No records found"
-          //   ) : (
-          //     <Stack direction="row" spacing={1}>
-          //       <span>
-          //         <Loading />
-          //       </span>
-          //       <span>Loading...</span>
-          //     </Stack>
-          //   )
           loading ? (
             <Stack direction="row" spacing={1}>
               <span>
@@ -207,11 +153,11 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
         renderInput={(params) => (
           <TextField
             {...params}
-            placeholder={placeHolder || "Search attribute to boost"}
+            placeholder={placeHolder || "Search"}
             InputProps={{
               ...params.InputProps,
               endAdornment:
-                (searchText || inputValue) && attributes?.length >= 1 ? (
+                searchText || inputValue ? (
                   <ClearIcon
                     fontSize="small"
                     sx={{
