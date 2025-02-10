@@ -61,7 +61,7 @@ const StatusChange = (props: any) => {
         .then((res) => {
           setColor(getColor(item?.value));
           toast.success(res?.data?.message);
-          handleApiCall();
+          handleApiCall(undefined, true);
         })
         .catch((err) => {
           toast.error(err?.response?.data?.message);

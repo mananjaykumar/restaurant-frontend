@@ -95,7 +95,7 @@ const AdminOrders = () => {
     return handleApiCall(ob);
   };
 
-  const handleApiCall = (postObj?: any) => {
+  const handleApiCall = (postObj?: any, includeDate?: boolean) => {
     dispatch(setProgress({ progress: 10 }));
     const obj = {
       // startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
@@ -104,11 +104,21 @@ const AdminOrders = () => {
       rowsPerPage,
       ...postObj,
     };
+    const dateObj = includeDate
+      ? {
+          startDate: dayjs(dateRangeData.startDate).format(
+            "YYYY-MM-DDTHH:mm:ss"
+          ),
+          endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
+          search: searchText,
+        }
+      : {};
     setLoading(true);
     dispatch(setProgress({ progress: 30 }));
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/orders`, {
         ...obj,
+        ...dateObj,
         // startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
         // endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
       })
