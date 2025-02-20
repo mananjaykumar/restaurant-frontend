@@ -8,7 +8,7 @@ import { makeStyles } from "@mui/styles";
 import theme from "../../theme";
 import { Loading } from "./Loading";
 import axios from "axios";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 const useStyles = makeStyles(() => ({
   listbox: {
@@ -101,8 +101,8 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
           setLoading(false);
         }, 1000);
       })
-      .catch((err) => {
-        toast.error(err.message);
+      .catch(() => {
+        // toast.error(err.message);
         setLoading(false);
       });
   };

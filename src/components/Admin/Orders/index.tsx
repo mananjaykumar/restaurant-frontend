@@ -7,7 +7,7 @@ import CustomDateRangePicker from "../../reusable/CustomDateRangePicker";
 import { CommonTable } from "../../reusable/CommonTable";
 import { Shimmer, tableBorderStyles } from "../../reusable/Shimmer";
 import { CommonMenu } from "../../reusable/CommonMenu";
-import StatusChange from "../../reusable/StatusChange";
+// import StatusChange from "../../reusable/StatusChange";
 import { socket } from "../../../socket";
 // import SearchInput from "../../reusable/SearchInput";
 import { Debounce } from "../../../utils/Debounce";
@@ -16,6 +16,7 @@ import { setProgress } from "../../../store/slices/ProgressSlice";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { AutocompleteInput } from "../../reusable/AutoCompleteInput";
+import StatusButton from "../../reusable/StatusButton";
 // import NewCommonTable from "../../reusable/NewCommonTable";
 
 export interface IDateRangeData {
@@ -387,7 +388,8 @@ const AdminOrders = () => {
                   <TableCell>{order?.instructions}</TableCell>
                   <TableCell>{order?.order_type}</TableCell>
                   <TableCell>
-                    <StatusChange order={order} handleApiCall={handleApiCall} />
+                    {/* <StatusChange order={order} handleApiCall={handleApiCall} /> */}
+                    <StatusButton order={order} handleApiCall={handleApiCall} />
                   </TableCell>
                   <TableCell>&#8377;{order?.amount}</TableCell>
                   <TableCell>{dayjs(order?.createdAt).format("LLL")}</TableCell>
