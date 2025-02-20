@@ -7,7 +7,9 @@ import toast from "react-hot-toast";
 import { updateCart } from "../../store/slices/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import * as routes from "../../routes/constants";
+import Confetti from "js-confetti";
 
+const confetti = new Confetti();
 const CheckOut = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,6 +42,7 @@ const CheckOut = () => {
         dispatch(setProgress({ progress: 70 }));
         setLoading(false);
         dispatch(setProgress({ progress: 100 }));
+        confetti.addConfetti();
         navigate(routes.ORDERS);
       })
       .catch((err) => {
