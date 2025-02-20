@@ -1,11 +1,18 @@
 import dayjs from "dayjs";
-import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import { Select, MenuItem, SelectChangeEvent, Typography } from "@mui/material";
+import EventNoteIcon from "@mui/icons-material/EventNote"; // This Week
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft"; // Last Week
+import HistoryIcon from "@mui/icons-material/History"; // Last 7 Days
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"; // Current Month
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft"; // Previous Month
+import SettingsIcon from "@mui/icons-material/Settings"; // Custom Filter
 import theme from "../../theme";
 
 const pastDateArray = [
   {
     label: "This Week",
     value: "this_week",
+    icon: <EventNoteIcon fontSize="small" />,
     getValue: () => {
       const today = dayjs().startOf("day");
       return [today.startOf("week"), today.endOf("week")];
@@ -14,6 +21,7 @@ const pastDateArray = [
   {
     label: "Last Week",
     value: "last_week",
+    icon: <ArrowCircleLeftIcon fontSize="small" />,
     getValue: () => {
       const today = dayjs().startOf("day");
       const prevWeek = today.subtract(7, "day");
@@ -23,6 +31,7 @@ const pastDateArray = [
   {
     label: "Last 7 Days",
     value: "last_7_days",
+    icon: <HistoryIcon fontSize="small" />,
     getValue: () => {
       const today = dayjs().startOf("day");
       return [today.subtract(7, "day"), today.endOf("day")];
@@ -31,6 +40,7 @@ const pastDateArray = [
   {
     label: "Current Month",
     value: "current_month",
+    icon: <CalendarMonthIcon fontSize="small" />,
     getValue: () => {
       const today = dayjs().startOf("day");
       return [today.startOf("month"), today.endOf("month")];
@@ -39,6 +49,7 @@ const pastDateArray = [
   {
     label: "Prev Month",
     value: "prev_month",
+    icon: <KeyboardArrowLeftIcon fontSize="small" />,
     getValue: () => {
       const today = dayjs().startOf("day");
       //   const startOfNextMonth = today.endOf("month").add(1, "day");
@@ -51,6 +62,7 @@ const pastDateArray = [
   {
     label: "Custom",
     value: "custom",
+    icon: <SettingsIcon fontSize="small" />,
     getValue: () => {
       const today = dayjs().startOf("day");
       return [today, today.add(1, "day").endOf("day")];
@@ -82,7 +94,7 @@ const DateMenu = (props: any) => {
         sx={{
           backgroundColor: theme.palette.grey[100],
           padding: "2px",
-          width: "130px",
+          width: "155px",
           "& .MuiOutlinedInput-notchedOutline": {
             border: "none",
           },
@@ -95,6 +107,7 @@ const DateMenu = (props: any) => {
           },
           "& .MuiSelect-select": {
             display: "flex",
+            gap: "0.5rem",
             alignItems: "center",
           },
           "& .MuiSelect-icon": {
@@ -132,6 +145,7 @@ const DateMenu = (props: any) => {
                 backgroundColor: theme.palette.grey[100],
                 borderRadius: "4px",
                 fontSize: "13px",
+                height: "35px",
                 "&:hover": {
                   backgroundColor: "#EDF5FF",
                 },
@@ -142,8 +156,22 @@ const DateMenu = (props: any) => {
       >
         {pastDateArray?.map((item: any) => {
           return (
-            <MenuItem value={item?.value} key={item?.label}>
-              {item?.label}
+            <MenuItem
+              value={item?.value}
+              key={item?.label}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "6px 12px",
+                fontSize: "12px",
+                "&.Mui-selected": { backgroundColor: "#E3F2FD" },
+                "&:hover": { backgroundColor: "#F5F5F5" },
+              }}
+            >
+              {item?.icon}
+              {/* {item?.label} */}
+              <Typography>{item?.label}</Typography>
             </MenuItem>
           );
         })}
