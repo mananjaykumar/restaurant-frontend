@@ -143,7 +143,7 @@ const AdminOrders = () => {
         order_id: fieldId,
       })
       .then((res) => {
-        handleApiCall();
+        handleApiCall({}, true);
         toast.success(res?.data?.message);
       })
       .catch((err) => {
