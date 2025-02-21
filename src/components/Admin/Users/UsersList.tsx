@@ -15,6 +15,8 @@ import { Debounce } from "../../../utils/Debounce";
 import { setProgress } from "../../../store/slices/ProgressSlice";
 import { useDispatch } from "react-redux";
 import dayjs from "dayjs";
+import DeleteIcon from "@mui/icons-material/Delete";
+import BlockIcon from "@mui/icons-material/Block";
 
 interface Users {
   data: any[];
@@ -43,9 +45,13 @@ const UsersList = () => {
   const handleChangePage = (_event: unknown, newPage: number) => {
     const _newPage = newPage + 1;
     setPage(_newPage);
-    let url = `${import.meta.env.VITE_BACKEND_URL}/api/admin/users?page=${_newPage}&rowsPerPage=${rowsPerPage}`;
+    let url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/admin/users?page=${_newPage}&rowsPerPage=${rowsPerPage}`;
     if (searchText) {
-      url = `${import.meta.env.VITE_BACKEND_URL}/api/admin/users?search=${searchText}&page=${page}&rowsPerPage=${rowsPerPage}`;
+      url = `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/admin/users?search=${searchText}&page=${page}&rowsPerPage=${rowsPerPage}`;
     }
     handleApiCall(url);
   };
@@ -56,9 +62,13 @@ const UsersList = () => {
     const number = parseInt(event.target.value, 10);
     setRowsPerPage(number);
     setPage(1);
-    let url = `${import.meta.env.VITE_BACKEND_URL}/api/admin/users?page=${page}&rowsPerPage=${number}`;
+    let url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/admin/users?page=${page}&rowsPerPage=${number}`;
     if (searchText) {
-      url = `${import.meta.env.VITE_BACKEND_URL}/api/admin/users?search=${searchText}&page=${page}&rowsPerPage=${number}`;
+      url = `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/admin/users?search=${searchText}&page=${page}&rowsPerPage=${number}`;
     }
     return handleApiCall(url);
   };
@@ -118,11 +128,17 @@ const UsersList = () => {
   };
   const menuItems = {
     items: [
-      { displayName: "Delete", disable: false, handlerFunc: handleDelete },
+      {
+        displayName: "Delete",
+        disable: false,
+        handlerFunc: handleDelete,
+        icon: <DeleteIcon />,
+      },
       {
         displayName: isRestrictedUser ? "Unblock" : "Block",
         disable: false,
         handlerFunc: handleBlock,
+        icon: <BlockIcon />,
       },
     ],
   };
@@ -150,7 +166,9 @@ const UsersList = () => {
 
   const handleApiCall = (url?: string) => {
     dispatch(setProgress({ progress: 10 }));
-    let URL = `${import.meta.env.VITE_BACKEND_URL}/api/admin/users?page=${page}&rowsPerPage=${rowsPerPage}`;
+    let URL = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/admin/users?page=${page}&rowsPerPage=${rowsPerPage}`;
     if (url) {
       URL = url;
     }
@@ -181,7 +199,9 @@ const UsersList = () => {
   useEffect(() => {
     if (isSearchTextAdded) {
       setPage(1);
-      const url = `${import.meta.env.VITE_BACKEND_URL}/api/admin/users?search=${searchText}&page=1&rowsPerPage=${rowsPerPage}`;
+      const url = `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/admin/users?search=${searchText}&page=1&rowsPerPage=${rowsPerPage}`;
       call(url);
     } else {
       handleApiCall();

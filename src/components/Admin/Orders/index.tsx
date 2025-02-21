@@ -17,6 +17,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { AutocompleteInput } from "../../reusable/AutoCompleteInput";
 import StatusButton from "../../reusable/StatusButton";
+import DeleteIcon from '@mui/icons-material/Delete';
 // import NewCommonTable from "../../reusable/NewCommonTable";
 
 export interface IDateRangeData {
@@ -155,7 +156,12 @@ const AdminOrders = () => {
 
   const menuItems = {
     items: [
-      { displayName: "Delete", disable: false, handlerFunc: handleDelete },
+      {
+        displayName: "Delete",
+        disable: false,
+        handlerFunc: handleDelete,
+        icon: <DeleteIcon />,
+      },
     ],
   };
   const handleMenu = (

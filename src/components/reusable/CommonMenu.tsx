@@ -16,6 +16,7 @@ type MenuItems = {
     handlerFunc: () => void;
     disable?: boolean;
     disabledText?: string;
+    icon?: React.ReactNode;
   }[];
 };
 type MenuItemTypes = {
@@ -23,6 +24,7 @@ type MenuItemTypes = {
   handlerFunc: () => void;
   disable?: boolean;
   disabledText?: string;
+  icon?: React.ReactNode;
 };
 
 type Props = {
@@ -90,6 +92,9 @@ export const CommonMenu: React.FC<Props> = (props) => {
               <span>
                 <MenuItem
                   sx={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    height: "25px",
                     textTransform: "none",
                     background: theme.palette.grey[100],
                     "&:hover": {
@@ -109,6 +114,7 @@ export const CommonMenu: React.FC<Props> = (props) => {
                   }
                   disabled={menuItem?.disable}
                 >
+                  {menuItem?.icon}
                   {menuItem.displayName}
                 </MenuItem>
               </span>
