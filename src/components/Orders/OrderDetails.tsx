@@ -126,7 +126,7 @@ const OrderDetails = () => {
         }));
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
         setMapData({
           NOT_FOUND: {
             step: 0,
@@ -135,7 +135,7 @@ const OrderDetails = () => {
             updatedAt: "",
           },
         });
-        toast.error("Order Not Found!");
+        toast.error(err?.response?.data?.message);
         setLoading(false);
       });
   }, []);
