@@ -3,6 +3,10 @@ export const CHECKOUT = "/user/checkout";
 export const DASHBOARD = "/user/dashboard";
 export const ORDERS = "/user/orders";
 export const ORDER_DETAILS = "/user/order/:id";
+export const PROFILE = "/user/profile";
+export const SEARCH = "/search";
+export const HELP = "/help";
+export const PRODUCT_DETAILS = "/product/:id";
 
 // Admin Routes
 export const R_ROOT = "/admin";

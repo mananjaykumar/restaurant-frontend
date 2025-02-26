@@ -47,6 +47,51 @@ const HOCAdmin = ({ children }: Props) => {
   return <NewSidebarMain>{children}</NewSidebarMain>;
 };
 
+function DynamicTitle() {
+  const location = useLocation();
+  const appName = "| Restaurant Application";
+
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      [`${navLinks.ROOT}`]: `Home ${appName}`,
+      [`${navLinks.ORDERS}`]: `Orders ${appName}`,
+      [`${navLinks.DASHBOARD}`]: `Dashboard ${appName}`,
+      [`${navLinks.CHECKOUT}`]: `Checkout ${appName}`,
+      [`${navLinks.PROFILE}`]: `Profile ${appName}`,
+      [`${navLinks.SEARCH}`]: `Search ${appName}`,
+      [`${navLinks.HELP}`]: `Help ${appName}`,
+      // Admin routes start here
+      [`${navLinks.R_UPLOAD_BANNER}`]: "Upload Banner",
+      [`${navLinks.R_UPLOAD_PRODUCTS}`]: "Upload Products",
+      [`${navLinks.R_ADD_CATEGORY}`]: "Add Category",
+      [`${navLinks.R_ADD_SUB_CATEGORY}`]: "Add Sub Category",
+      [`${navLinks.R_ORDERS}`]: "Orders",
+      [`${navLinks.R_USERS_LIST}`]: "Users",
+      [`${navLinks.R_SETTINGS}`]: "Settings",
+    };
+
+    // Handling dynamic routes like "/user/order/:id"
+    if (
+      location.pathname.startsWith(navLinks.ORDER_DETAILS.replace(":id", "")) ||
+      location.pathname.startsWith(navLinks.PRODUCT_DETAILS.replace(":id", ""))
+    ) {
+      document.title = location.pathname.startsWith(
+        navLinks.ORDER_DETAILS.replace(":id", "")
+      )
+        ? `Order Details ${appName}`
+        : `Product Details ${appName}`;
+    } else if (location.pathname.startsWith(navLinks.R_ROOT)) {
+      document.title = `${
+        titles[location.pathname] || "Restaurant Application"
+      }  | Admin`;
+    } else {
+      document.title = titles[location.pathname] || "Restaurant Application";
+    }
+  }, [location.pathname]);
+
+  return null;
+}
+
 function App() {
   const { userData } = useSelector((state: any) => state.auth);
   const location = useLocation();
@@ -58,6 +103,7 @@ function App() {
   });
   return (
     <div style={{ display: "flex", flexFlow: "column" }}>
+      <DynamicTitle />
       {/* <Sidebar /> */}
       <div style={{ flex: 1 }}>
         {/* <TopAppBar /> */}

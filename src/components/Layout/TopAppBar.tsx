@@ -86,7 +86,7 @@ function TopAppBar() {
     {
       name: "Profile",
       icon: <PersonOutlineOutlinedIcon />,
-      to: "/profile",
+      to: routes.PROFILE,
       drawer: false,
     },
     {
