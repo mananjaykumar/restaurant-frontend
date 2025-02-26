@@ -17,6 +17,8 @@ axios.interceptors.request.use(
     request.headers["Authorization"] = `Bearer ${
       store?.getState()?.auth?.userData?.token
     }`;
+    request.headers["Name"] = store?.getState()?.auth?.userData?.name;
+    request.headers["Role"] = store?.getState()?.auth?.userData?.role;
     return request;
   },
   (error) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Stack, Button, TextField, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -68,6 +68,16 @@ const AdminBanner = () => {
         dispatch(setProgress({ progress: 100 }));
       });
   };
+
+  //call api to check real admin
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/settings`)
+      .then()
+      .catch((err) => {
+        toast.error(err?.response?.data?.message);
+      });
+  }, []);
   return (
     <Stack
       sx={{

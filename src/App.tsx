@@ -208,14 +208,14 @@ function App() {
                   </HOCAdmin>
                 }
               />
-              <Route
+              {/* <Route
                 path={navLinks.R_UPLOAD_BANNER}
                 element={
                   <HOCAdmin>
                     <AdminBanner />
                   </HOCAdmin>
                 }
-              />
+              /> */}
               <Route
                 path={navLinks.R_UPLOAD_PRODUCTS}
                 element={

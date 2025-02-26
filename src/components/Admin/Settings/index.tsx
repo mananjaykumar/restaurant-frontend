@@ -44,12 +44,12 @@ const Settings = () => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSettingData((prev) => {
-      return {
-        ...prev,
-        notify_orders_via_sms: event.target.checked,
-      };
-    });
+    // setSettingData((prev) => {
+    //   return {
+    //     ...prev,
+    //     notify_orders_via_sms: event.target.checked,
+    //   };
+    // });
     dispatch(setProgress({ progress: 10 }));
     setLoading(true);
     axios
