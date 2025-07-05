@@ -245,6 +245,7 @@ const AdminOrders = () => {
     dense: true,
     handleRequestSort: () => {},
     loading,
+    totalSalesRequired: true,
   };
 
   const call = useCallback(Debounce(handleApiCall, 500), []);

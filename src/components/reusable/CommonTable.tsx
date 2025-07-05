@@ -112,6 +112,7 @@ type ITable = {
   width?: string;
   isFromFacetOnboarding?: boolean;
   isPaginationNotNeeded?: boolean;
+  totalSalesRequired?: boolean;
 };
 
 export const CommonTable = (props: ITable) => {
@@ -152,6 +153,7 @@ export const CommonTable = (props: ITable) => {
     // width,
     isFromFacetOnboarding,
     // isPaginationNotNeeded,
+    totalSalesRequired,
   } = props;
   const classes = useStyles(theme);
   const page = info?.meta?.pagination?.page || 1;
@@ -464,32 +466,34 @@ export const CommonTable = (props: ITable) => {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Stack>
-        <Stack
-          sx={{
-            justifyContent: "center",
-            marginRight: "2rem",
-          }}
-        >
-          <Typography
+        {totalSalesRequired && (
+          <Stack
             sx={{
-              fontWeight: "bold",
-              padding: "10px",
-              background: "linear-gradient(to right, #0a192f, #1467c6)",
-              color: "white",
-              fontSize: "14px",
-              borderRadius: "20px",
+              justifyContent: "center",
+              marginRight: "2rem",
             }}
           >
-            Total Sales:{" "}
-            {loading ? (
-              <Loading />
-            ) : info?.meta?.totalSales === undefined ? (
-              <Loading />
-            ) : (
-              `₹${info?.meta?.totalSales}`
-            )}
-          </Typography>
-        </Stack>
+            <Typography
+              sx={{
+                fontWeight: "bold",
+                padding: "10px",
+                background: "linear-gradient(to right, #0a192f, #1467c6)",
+                color: "white",
+                fontSize: "14px",
+                borderRadius: "20px",
+              }}
+            >
+              Total Sales:{" "}
+              {loading ? (
+                <Loading />
+              ) : info?.meta?.totalSales === undefined ? (
+                <Loading />
+              ) : (
+                `₹${info?.meta?.totalSales}`
+              )}
+            </Typography>
+          </Stack>
+        )}
       </Stack>
       {/* {!isFromFacetOnboarding && !isPaginationNotNeeded && (
         <Stack direction="row" justifyContent="space-between">
