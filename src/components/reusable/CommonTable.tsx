@@ -29,6 +29,7 @@ import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 // import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 // import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import theme from "../../theme";
+import { Loading } from "./Loading";
 // import { ErrorComp } from './ErrorComp';
 
 const useStyles = makeStyles(() => ({
@@ -185,6 +186,36 @@ export const CommonTable = (props: ITable) => {
                 borderRadius: "6px",
               }),
           ...sx,
+          // "&::-webkit-scrollbar": {
+          //   width: "8px",
+          //   height: "8px",
+          // },
+          // "&::-webkit-scrollbar-track": {
+          //   background: "transparent",
+          // },
+          // "&::-webkit-scrollbar-thumb": {
+          //   backgroundColor: "pink",
+          //   borderRadius: "10px",
+          //   border: "2px solid transparent",
+          //   backgroundClip: "content-box",
+          // },
+          // scrollbarWidth: "thin",
+          // scrollbarColor: "pink transparent",
+          scrollbarWidth: "thin",
+          scrollbarColor: "#1467c6 transparent",
+          // "&::-webkit-scrollbar": {
+          //   width: "8px",
+          //   height: "8px",
+          // },
+          // "&::-webkit-scrollbar-track": {
+          //   background: "transparent",
+          // },
+          // "&::-webkit-scrollbar-thumb": {
+          //   background: "linear-gradient(top to bottom, #0a192f, #1467c6)",
+          //   borderRadius: "10px",
+          //   border: "2px solid transparent",
+          //   backgroundClip: "content-box",
+          // },
         }}
       >
         {/* <DragDropContext onDragEnd={(results) => handleDrag(results)}> */}
@@ -432,6 +463,25 @@ export const CommonTable = (props: ITable) => {
             rowsPerPage={rowsPerPage}
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
+        </Stack>
+        <Stack
+          sx={{
+            justifyContent: "center",
+            marginRight: "2rem",
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              padding: "10px",
+              background: "linear-gradient(to right, #0a192f, #1467c6)",
+              color: "white",
+              fontSize: "14px",
+              borderRadius: "20px",
+            }}
+          >
+            Total Sales: {loading ? <Loading /> : info?.meta?.totalSales}
+          </Typography>
         </Stack>
       </Stack>
       {/* {!isFromFacetOnboarding && !isPaginationNotNeeded && (

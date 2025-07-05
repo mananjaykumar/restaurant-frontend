@@ -17,7 +17,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { AutocompleteInput } from "../../reusable/AutoCompleteInput";
 import StatusButton from "../../reusable/StatusButton";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 // import NewCommonTable from "../../reusable/NewCommonTable";
 
 export interface IDateRangeData {
@@ -239,7 +239,7 @@ const AdminOrders = () => {
     info: orders,
     handleChangePage: handleChangePage,
     handleChangeRowsPerPage: handleChangeRowsPerPage,
-    height: "calc(100vh - 260px)",
+    height: "calc(100vh - 265px)",
     msg: "No matching Orders",
     subMsg: "We could not find any Orders matching your search",
     dense: true,
