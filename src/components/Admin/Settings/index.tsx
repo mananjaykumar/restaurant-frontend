@@ -23,6 +23,7 @@ const Settings = () => {
   const [settingData, setSettingData] = React.useState({
     notify_orders_via_sms: false,
   });
+  const [walletBal, setWalletBal] = React.useState();
 
   const fetchSettings = () => {
     dispatch(setProgress({ progress: 10 }));
@@ -32,6 +33,7 @@ const Settings = () => {
       .then((res) => {
         dispatch(setProgress({ progress: 50 }));
         setSettingData(res?.data?.data[0]);
+        setWalletBal(res?.data?.data.sms_wallet);
         dispatch(setProgress({ progress: 70 }));
         setLoading(false);
         dispatch(setProgress({ progress: 100 }));
@@ -138,6 +140,22 @@ const Settings = () => {
           onChange={handleChange}
           inputProps={{ "aria-label": "controlled" }}
         />
+      </Grid>
+      <Grid item xs={6}>
+        <Typography
+          sx={{
+            fontSize: "15px",
+          }}
+        >
+          SMS Wallet Balance
+        </Typography>
+      </Grid>
+      <Grid item xs={6}>
+        <Typography
+          sx={{ color: "green", fontWeight: " bold", fontSize: " 14px" }}
+        >
+          {walletBal}
+        </Typography>
       </Grid>
     </Grid>
   );
