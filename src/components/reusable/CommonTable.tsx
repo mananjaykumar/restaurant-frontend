@@ -480,7 +480,7 @@ export const CommonTable = (props: ITable) => {
               borderRadius: "20px",
             }}
           >
-            Total Sales: {loading ? <Loading /> : info?.meta?.totalSales}
+            Total Sales: {loading ? <Loading /> : `₹${info?.meta?.totalSales}`}
           </Typography>
         </Stack>
       </Stack>
