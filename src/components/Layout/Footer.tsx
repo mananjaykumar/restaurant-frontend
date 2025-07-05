@@ -92,7 +92,7 @@ const Footer = () => {
           </Stack>
           <Stack direction="row" alignItems="center" gap={0.5}>
             <EmailIcon />
-            <Typography>abcd@gmail.com</Typography>
+            <Typography>sinharishab100@gmail.com</Typography>
           </Stack>
         </Stack>
         <Stack
