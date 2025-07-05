@@ -277,10 +277,24 @@ const AdminOrders = () => {
         const oldOrders = [...prev.data];
         // console.log("oldOrders", oldOrders);
         oldOrders.unshift(data.data);
+        console.log("prev", prev);
+        console.log("socketdata", {
+          ...data.meta,
+          totalSales:
+            prev?.meta?.totalSales === undefined
+              ? 0 + data?.data?.amount
+              : prev?.meta?.totalSales + data?.data?.amount,
+        });
         return {
           ...prev,
           data: oldOrders,
-          meta: data.meta,
+          meta: {
+            ...data.meta,
+            totalSales:
+              prev?.meta?.totalSales === undefined
+                ? 0 + data?.data?.amount
+                : prev?.meta?.totalSales + data?.data?.amount,
+          },
         };
       });
     });
