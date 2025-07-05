@@ -284,7 +284,7 @@ const AdminOrders = () => {
             ...data.meta,
             pagination: {
               ...data.meta.pagination,
-              total: prev?.data?.length === 1 ? 1 : prev?.meta?.total + 1,
+              total: prev?.data?.length === 1 ? 1 : prev?.meta?.pagination?.total + 1,
             },
             totalSales:
               prev?.meta?.totalSales === undefined
