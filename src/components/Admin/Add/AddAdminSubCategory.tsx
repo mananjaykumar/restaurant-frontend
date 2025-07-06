@@ -87,11 +87,14 @@ const AddAdminSubCategory = () => {
             onClick={handleSubmit}
             disabled={loading}
             sx={{
+              background: "linear-gradient(to right, #0a192f, #1467c6)",
               "&:hover": {
-                backgroundColor: "#FC8019",
+                // backgroundColor: "#FC8019",
+                background:
+                  "linear-gradient(to right,rgb(128, 157, 201), #1467c6)",
               },
               "&.Mui-disabled": {
-                backgroundColor: "#f3f3f3",
+                background: "#f3f3f3 !important",
               },
             }}
           >
