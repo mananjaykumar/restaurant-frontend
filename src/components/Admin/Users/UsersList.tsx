@@ -228,6 +228,16 @@ const UsersList = () => {
           <Button
             variant="contained"
             startIcon={<AddIcon />}
+            sx={{
+              background: "linear-gradient(to right, #0a192f, #1467c6)",
+              "&:hover": {
+                background:
+                  "linear-gradient(to right,rgb(128, 157, 201), #1467c6)",
+              },
+              "&.Mui-disabled": {
+                background: "#f3f3f3 !important",
+              },
+            }}
             onClick={() => {
               setAdminDrawer(true);
             }}

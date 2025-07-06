@@ -52,7 +52,7 @@ const AdminProducts = () => {
   const [subCategoryState, setSubCategoryState] = React.useState([]);
 
   const handleSubmit = () => {
-    dispatch(setProgress({ progress: 10 }));
+    // dispatch(setProgress({ progress: 10 }));
     setLoading(true);
     axios
       .post(
@@ -71,12 +71,19 @@ const AdminProducts = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          onUploadProgress: (progressEvent: any) => {
+            const percentComplete = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            // setProgressPercent(percentComplete);
+            dispatch(setProgress({ progress: percentComplete }));
+          },
         }
       )
       .then((res) => {
-        dispatch(setProgress({ progress: 30 }));
+        // dispatch(setProgress({ progress: 30 }));
         toast.success(res?.data?.message);
-        dispatch(setProgress({ progress: 70 }));
+        // dispatch(setProgress({ progress: 70 }));
         setMostLovedState({
           title: "",
           originalPrice: "",
@@ -90,12 +97,12 @@ const AdminProducts = () => {
           },
         });
         setLoading(false);
-        dispatch(setProgress({ progress: 100 }));
+        // dispatch(setProgress({ progress: 100 }));
       })
       .catch((err) => {
         toast.error(err?.response?.data?.message);
         setLoading(false);
-        dispatch(setProgress({ progress: 100 }));
+        // dispatch(setProgress({ progress: 100 }));
       });
   };
 
@@ -338,7 +345,10 @@ const AdminProducts = () => {
               component="label"
               variant="contained"
               startIcon={<CloudUploadIcon />}
-              sx={{ width: "fit-content" }}
+              sx={{
+                width: "fit-content",
+                background: "linear-gradient(to right, #0a192f, #1467c6)",
+              }}
             >
               Upload file
               <VisuallyHiddenInput
@@ -366,11 +376,14 @@ const AdminProducts = () => {
             onClick={handleSubmit}
             disabled={loading}
             sx={{
+              background: "linear-gradient(to right, #0a192f, #1467c6)",
               "&:hover": {
-                backgroundColor: "#FC8019",
+                // backgroundColor: "#FC8019",
+                background:
+                  "linear-gradient(to right,rgb(128, 157, 201), #1467c6)",
               },
               "&.Mui-disabled": {
-                backgroundColor: "#f3f3f3",
+                background: "#f3f3f3 !important",
               },
             }}
           >

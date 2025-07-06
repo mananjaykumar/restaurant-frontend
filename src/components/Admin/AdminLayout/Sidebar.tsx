@@ -1019,7 +1019,6 @@
 //   );
 // }
 
-
 // ******------------------------------Updated Below---------------------------------------------*****
 
 /* eslint-disable no-nested-ternary */
@@ -1409,7 +1408,11 @@ export default function Sidebar({ children }: ISidebar) {
           </Typography> */}
         </Toolbar>
       </AppBar>
-      <LoadingBar color="#f11946" progress={progress} height={3} />
+      <LoadingBar
+        color="linear-gradient(to right, #0a192f, #1467c6)"
+        progress={progress}
+        height={3}
+      />
       <Drawer
         // className={classNames(css.root)}
         variant="permanent"
