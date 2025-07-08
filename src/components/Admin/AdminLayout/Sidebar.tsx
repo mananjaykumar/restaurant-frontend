@@ -1409,7 +1409,8 @@ export default function Sidebar({ children }: ISidebar) {
         </Toolbar>
       </AppBar>
       <LoadingBar
-        color="linear-gradient(to right, #0a192f, #1467c6)"
+        // color="linear-gradient(to right, #0a192f, #1467c6)"
+        color="linear-gradient(to right,#1467c6, #0a192f)"
         progress={progress}
         height={3}
       />
