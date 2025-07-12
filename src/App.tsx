@@ -246,7 +246,7 @@ function App() {
                     <Stack
                       sx={{
                         padding: "5px 20px",
-                        marginTop: "50px",
+                        marginTop: "40px",
                       }}
                     >
                       <AdminOrders />

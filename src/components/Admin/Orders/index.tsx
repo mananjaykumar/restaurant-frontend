@@ -239,7 +239,7 @@ const AdminOrders = () => {
     info: orders,
     handleChangePage: handleChangePage,
     handleChangeRowsPerPage: handleChangeRowsPerPage,
-    height: "calc(100vh - 265px)",
+    height: "calc(100vh - 250px)",
     msg: "No matching Orders",
     subMsg: "We could not find any Orders matching your search",
     dense: true,
