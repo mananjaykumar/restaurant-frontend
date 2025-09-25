@@ -49,7 +49,8 @@ const HOCAdmin = ({ children }: Props) => {
 
 function DynamicTitle() {
   const location = useLocation();
-  const appName = "| Restaurant Application";
+  // const appName = "| Restaurant Application";
+  const appName = "| Khane Khana";
 
   useEffect(() => {
     const titles: Record<string, string> = {
