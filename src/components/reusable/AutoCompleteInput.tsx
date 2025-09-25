@@ -17,19 +17,27 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     gap: theme.spacing(0.6),
     maxHeight: "200px !important",
+    scrollbarWidth: "thin",
+    scrollbarColor: "#1467c6 transparent",
   },
   option: {
-    backgroundColor: theme.palette.grey[100],
+    // backgroundColor: theme.palette.grey[100],
+    backgroundColor: `${theme.palette.primary.light} !important`,
+    color: "#1467c6",
     borderRadius: "4px",
     fontSize: "13px",
     "&:hover": {
-      backgroundColor: `${theme.palette.primary.light} !important`,
+      // backgroundColor: `${theme.palette.primary.light} !important`,
+      background: "linear-gradient(to right, #0a192f, #1467c6) !important",
+      color: "white",
     },
     minHeight: "34px !important",
   },
   searchInput: {
-    backgroundColor: "#fff",
-    color: "inherit",
+    // backgroundColor: "#fff",
+    // color: "inherit",
+    background: "linear-gradient(to right, #0a192f, #1467c6) !important",
+    color: "white !important",
     border: `1px solid ${theme.palette.grey[300]} !important`,
     borderRadius: "6px",
     textTransform: "none",
@@ -122,6 +130,7 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
         sx={{
           "& .MuiOutlinedInput-root": {
             padding: "0 8px !important",
+            color: "white",
           },
         }}
         value={inputValue}
@@ -170,7 +179,12 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
                     }}
                   />
                 ) : (
-                  <SearchIcon sx={{ color: theme.palette.grey[500] }} />
+                  <SearchIcon
+                    sx={{
+                      // color: theme.palette.grey[500]
+                      color: "white",
+                    }}
+                  />
                 ),
             }}
             classes={{ root: classes.searchInput }}

@@ -62,8 +62,8 @@ const theme: Theme = createTheme({
     htmlFontSize: 13,
     fontSize: 13,
     fontFamily: [
-      "Rubik",
       "Roboto",
+      "Rubik",
       '"Helvetica Neue"',
       "Arial",
       "sans-serif",

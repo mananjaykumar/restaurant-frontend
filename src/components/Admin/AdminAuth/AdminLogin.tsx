@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Stack, TextField, Button, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../store/slices/AuthSlice";
 import { setProgress } from "../../../store/slices/ProgressSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import LoadingBar from "react-top-loading-bar";
+import image from "../../../assets/Analytics.png";
 
 const AdminLogin = () => {
   const dispatch = useDispatch();
@@ -71,7 +73,7 @@ const AdminLogin = () => {
   return (
     <>
       <LoadingBar color="#f11946" progress={progress} height={3} />
-      <Stack
+      {/* <Stack
         sx={{
           marginLeft: {
             sm: "calc(10% + 36px)",
@@ -82,77 +84,101 @@ const AdminLogin = () => {
             // xs: "calc(2%)",
           },
         }}
-      >
-        <Stack
-          gap={2}
-          sx={{
-            padding: { xs: "30px", sm: "50px", md: "50px 300px" },
+      > */}
+      <Grid container spacing={2} mt={-16}>
+        <Grid size={{ lg: 6, sm: 6, xs: 12 }} sx={{ padding: "60px" }}>
+          <img src={image} style={{ width: "-webkit-fill-available" }} />
+        </Grid>
+        <Grid
+          size={{
+            lg: 6,
+            sm: 6,
+            xs: 12,
           }}
+          sx={{ padding: "50px" }}
         >
-          <Stack>
-            <Typography fontSize="24px">Welcome to Admin Console</Typography>
-          </Stack>
-          <Stack gap={2}>
-            <TextField
-              autoFocus
-              variant="outlined"
-              type="number"
-              label="Phone Number"
-              disabled={otpSent}
-              value={adminLoginState.phone}
-              onChange={(e) => {
-                if (e.target.value.toString().length <= 10) {
-                  setAdminLoginState((prev: any) => {
-                    return {
-                      ...prev,
-                      phone: e.target.value,
-                    };
-                  });
-                }
-              }}
-            />
-            {otpSent && (
+          <Stack
+            gap={2}
+            sx={{
+              // padding: { xs: "30px", sm: "50px", md: "50px 300px" },
+              display: "flex",
+              height: "100%",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <Stack>
+              <Typography
+                sx={{
+                  fontSize: "24px",
+                }}
+              >
+                Welcome to Admin Console
+              </Typography>
+            </Stack>
+            <Stack gap={2}>
               <TextField
+                autoFocus
                 variant="outlined"
                 type="number"
-                label="OTP"
-                value={adminLoginState.otp}
+                label="Phone Number"
+                disabled={otpSent}
+                value={adminLoginState.phone}
                 onChange={(e) => {
-                  setAdminLoginState((prev: any) => {
-                    return {
-                      ...prev,
-                      otp: e.target.value,
-                    };
-                  });
+                  if (e.target.value.toString().length <= 10) {
+                    setAdminLoginState((prev: any) => {
+                      return {
+                        ...prev,
+                        phone: e.target.value,
+                      };
+                    });
+                  }
                 }}
               />
-            )}
-            {otpSent ? (
-              <Button
-                variant="contained"
-                disabled={loading}
-                onClick={handleSubmit}
-                sx={{
-                  width: "fit-content",
-                }}
-              >
-                {loading ? "Loading..." : "Submit"}
-              </Button>
-            ) : (
-              <Button
-                variant="contained"
-                disabled={loading}
-                onClick={handleLogin}
-                sx={{
-                  width: "fit-content",
-                }}
-              >
-                {loading ? "Loading..." : "Login"}
-              </Button>
-            )}
+              {otpSent && (
+                <TextField
+                  variant="outlined"
+                  type="number"
+                  label="OTP"
+                  value={adminLoginState.otp}
+                  onChange={(e) => {
+                    setAdminLoginState((prev: any) => {
+                      return {
+                        ...prev,
+                        otp: e.target.value,
+                      };
+                    });
+                  }}
+                />
+              )}
+              {otpSent ? (
+                <Button
+                  variant="contained"
+                  disabled={loading}
+                  onClick={handleSubmit}
+                  sx={{
+                    width: "fit-content",
+                  }}
+                >
+                  {loading ? "Loading..." : "Submit"}
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  disabled={loading}
+                  onClick={handleLogin}
+                  sx={{
+                    width: "fit-content",
+                  }}
+                >
+                  {loading ? "Loading..." : "Login"}
+                </Button>
+              )}
+            </Stack>
           </Stack>
-        </Stack>
-      </Stack>
+        </Grid>
+      </Grid>
+      {/* </Stack> */}
     </>
   );
 };

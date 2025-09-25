@@ -49,7 +49,8 @@ const HOCAdmin = ({ children }: Props) => {
 
 function DynamicTitle() {
   const location = useLocation();
-  const appName = "| Restaurant Application";
+  // const appName = "| Restaurant Application";
+  const appName = "| Khane Khana";
 
   useEffect(() => {
     const titles: Record<string, string> = {
@@ -81,11 +82,15 @@ function DynamicTitle() {
         ? `Order Details ${appName}`
         : `Product Details ${appName}`;
     } else if (location.pathname.startsWith(navLinks.R_ROOT)) {
+      // document.title = `${
+      //   titles[location.pathname] || "Restaurant Application"
+      // }  | Admin`;
       document.title = `${
-        titles[location.pathname] || "Restaurant Application"
+        titles[location.pathname] || "Khane Khana"
       }  | Admin`;
     } else {
-      document.title = titles[location.pathname] || "Restaurant Application";
+      // document.title = titles[location.pathname] || "Restaurant Application";
+      document.title = titles[location.pathname] || "Khane Khana";
     }
   }, [location.pathname]);
 
@@ -246,7 +251,7 @@ function App() {
                     <Stack
                       sx={{
                         padding: "5px 20px",
-                        marginTop: "50px",
+                        marginTop: "40px",
                       }}
                     >
                       <AdminOrders />
