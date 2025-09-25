@@ -82,11 +82,15 @@ function DynamicTitle() {
         ? `Order Details ${appName}`
         : `Product Details ${appName}`;
     } else if (location.pathname.startsWith(navLinks.R_ROOT)) {
+      // document.title = `${
+      //   titles[location.pathname] || "Restaurant Application"
+      // }  | Admin`;
       document.title = `${
-        titles[location.pathname] || "Restaurant Application"
+        titles[location.pathname] || "Khane Khana"
       }  | Admin`;
     } else {
-      document.title = titles[location.pathname] || "Restaurant Application";
+      // document.title = titles[location.pathname] || "Restaurant Application";
+      document.title = titles[location.pathname] || "Khane Khana";
     }
   }, [location.pathname]);
 

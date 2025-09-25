@@ -3,9 +3,9 @@ import { IconButton, Stack, Typography } from "@mui/material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import PhoneIcon from "@mui/icons-material/Phone";
+// import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
 import AOS from "aos";
 
 const Footer = () => {
@@ -40,11 +40,11 @@ const Footer = () => {
             sx={{
               color: "white",
             }}
-            // onClick={() => (window.location.href = "https://www.youtube.com")}
-            onClick={() =>
-              (window.location.href =
-                "https://www.youtube.com/channel/UCU889rxrmHpf-dnB__hD8xQ")
-            }
+            onClick={() => (window.location.href = "https://www.youtube.com")}
+            // onClick={() =>
+            //   (window.location.href =
+            //     "https://www.youtube.com/channel/UCU889rxrmHpf-dnB__hD8xQ")
+            // }
           >
             <YouTubeIcon fontSize="large" />
           </IconButton>
@@ -52,10 +52,10 @@ const Footer = () => {
             sx={{
               color: "white",
             }}
-            // onClick={() => (window.location.href = "https://www.instagram.com")}
-            onClick={() =>
-              (window.location.href = "https://www.instagram.com/__mj_28_/")
-            }
+            onClick={() => (window.location.href = "https://www.instagram.com")}
+            // onClick={() =>
+            //   (window.location.href = "https://www.instagram.com/__mj_28_/")
+            // }
           >
             <InstagramIcon fontSize="large" />
           </IconButton>
@@ -63,20 +63,24 @@ const Footer = () => {
             sx={{
               color: "white",
             }}
-            // onClick={() => (window.location.href = "https://www.facebook.com")}
-            onClick={() =>
-              (window.location.href =
-                "https://www.facebook.com/rishab.sinha.56/")
-            }
+            onClick={() => (window.location.href = "https://www.facebook.com")}
+            // onClick={() =>
+            //   (window.location.href =
+            //     "https://www.facebook.com/rishab.sinha.56/")
+            // }
           >
             <FacebookIcon fontSize="large" />
           </IconButton>
         </Stack>
         <Stack textAlign="center">
-          <Typography>
+          {/* <Typography>
             250 Executive Park Blvd, Suite 3400, San Francisco CA 94134, United
             States
+          </Typography> */}
+          <Typography>
+            Patna, Bihar, India
           </Typography>
+
         </Stack>
         <Stack
           sx={{
@@ -86,13 +90,13 @@ const Footer = () => {
             gap: "3rem",
           }}
         >
-          <Stack direction="row" alignItems="center" gap={0.5}>
+          {/* <Stack direction="row" alignItems="center" gap={0.5}>
             <PhoneIcon />
-            <Typography>+91 8233101852</Typography>
-          </Stack>
+            <Typography>+91 8507</Typography>
+          </Stack> */}
           <Stack direction="row" alignItems="center" gap={0.5}>
             <EmailIcon />
-            <Typography>sinharishab100@gmail.com</Typography>
+            <Typography>khanekhana0102@gmail.com</Typography>
           </Stack>
         </Stack>
         <Stack
@@ -103,10 +107,10 @@ const Footer = () => {
             gap: "2rem",
           }}
         >
-          <Stack direction="row" alignItems="center" gap={0.5}>
+          {/* <Stack direction="row" alignItems="center" gap={0.5}>
             <Typography>Made with</Typography> <FavoriteIcon fontSize="small" />
             <Typography>by Mananjay Kumar</Typography>
-          </Stack>
+          </Stack> */}
           <Stack>
             <Typography> Copyright &copy; 2023 </Typography>
           </Stack>
