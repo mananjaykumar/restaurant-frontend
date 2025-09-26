@@ -7,6 +7,7 @@ import {
 // import { createOrder } from "../../Redux/CounterSlice";
 import { useNavigate } from "react-router-dom";
 import * as navLinks from "../../routes/constants";
+import cartImage from "../../assets/cartImage.png"
 
 const Cart = (props: any) => {
   const { cart } = useSelector((state: any) => state.auth.userData);
@@ -108,21 +109,25 @@ const Cart = (props: any) => {
           }}
         >
           <img
-            src="https://bazar-react.vercel.app/assets/images/logos/shopping-bag.svg"
+            // src="https://bazar-react.vercel.app/assets/images/logos/shopping-bag.svg"
+            src={cartImage}
             alt="shopping bag"
+            height="100px"
+            width="150px"
           />
           <Typography
             variant="body2"
             sx={{
-              color: "secondary.main",
+              color: "primary.main",
               fontWeight: "600",
               marginTop: "20px",
               textAlign: "center",
             }}
           >
-            Your Shopping Bag is empty!
-            <br />
-            Start Shopping
+            {/* Your Shopping Bag is empty! */}
+            Your Cart is empty!
+            {/* <br />
+            Start Shopping */}
           </Typography>
         </Stack>
       )}
