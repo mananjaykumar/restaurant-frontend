@@ -28,6 +28,7 @@ import CheckOut from "./components/Orders/CheckOut";
 import Orders from "./components/Orders";
 import OrderDetails from "./components/Orders/OrderDetails";
 import Settings from "./components/Admin/Settings";
+import Profile from "./components/Profile";
 
 interface Props {
   children: React.ReactNode;
@@ -85,9 +86,7 @@ function DynamicTitle() {
       // document.title = `${
       //   titles[location.pathname] || "Restaurant Application"
       // }  | Admin`;
-      document.title = `${
-        titles[location.pathname] || "Khane Khana"
-      }  | Admin`;
+      document.title = `${titles[location.pathname] || "Khane Khana"}  | Admin`;
     } else {
       // document.title = titles[location.pathname] || "Restaurant Application";
       document.title = titles[location.pathname] || "Khane Khana";
@@ -163,6 +162,14 @@ function App() {
                 element={
                   <HOC>
                     <OrderDetails />
+                  </HOC>
+                }
+              />
+              <Route
+                path={navLinks.PROFILE}
+                element={
+                  <HOC>
+                    <Profile />
                   </HOC>
                 }
               />
