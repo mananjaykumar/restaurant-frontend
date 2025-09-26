@@ -1,9 +1,4 @@
-import {
-  Button,
-  CircularProgress,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Button, CircularProgress, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
@@ -131,7 +126,7 @@ function CartProduct(props: any) {
         gap: "1.5rem",
       }}
     >
-      <Stack direction="row" gap={2}>
+      <Stack direction="row" gap={2} sx={{ width: "100%" }}>
         <Stack>
           <CardIncButton
             // onClick={() => {
