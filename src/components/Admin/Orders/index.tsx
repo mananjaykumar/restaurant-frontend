@@ -33,7 +33,7 @@ interface CopyState {
 }
 
 const AdminOrders = () => {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const dispatch = useDispatch();
   const [dateRangeData, setDateRangeData] = useState<IDateRangeData>({
     startDate: dayjs().startOf("day").subtract(7, "day"),
@@ -311,12 +311,11 @@ const AdminOrders = () => {
 
   const playNotificationSound = () => {
     if (audioRef.current) {
-      audioRef.current.play().catch((error) => {
+      audioRef.current.play().catch((error: unknown) => {
         console.log("Error playing sound", error);
       });
     }
   };
-
   return (
     <Stack gap={1} direction="column">
       {/* <Stack alignSelf="flex-end">
