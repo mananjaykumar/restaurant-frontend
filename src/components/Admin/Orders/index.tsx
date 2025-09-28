@@ -1,24 +1,25 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Stack, TableCell, TableRow, Tooltip, Typography } from "@mui/material";
-import dayjs, { Dayjs } from "dayjs";
-import axios from "axios";
-import toast from "react-hot-toast";
-import CustomDateRangePicker from "../../reusable/CustomDateRangePicker";
-import { CommonTable } from "../../reusable/CommonTable";
-import { Shimmer, tableBorderStyles } from "../../reusable/Shimmer";
-import { CommonMenu } from "../../reusable/CommonMenu";
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Stack, TableCell, TableRow, Tooltip, Typography } from '@mui/material';
+import dayjs, { Dayjs } from 'dayjs';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import CustomDateRangePicker from '../../reusable/CustomDateRangePicker';
+import { CommonTable } from '../../reusable/CommonTable';
+import { Shimmer, tableBorderStyles } from '../../reusable/Shimmer';
+import { CommonMenu } from '../../reusable/CommonMenu';
 // import StatusChange from "../../reusable/StatusChange";
-import { socket } from "../../../socket";
+import { socket } from '../../../socket';
 // import SearchInput from "../../reusable/SearchInput";
-import { Debounce } from "../../../utils/Debounce";
-import { useDispatch } from "react-redux";
-import { setProgress } from "../../../store/slices/ProgressSlice";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { AutocompleteInput } from "../../reusable/AutoCompleteInput";
-import StatusButton from "../../reusable/StatusButton";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Debounce } from '../../../utils/Debounce';
+import { useDispatch } from 'react-redux';
+import { setProgress } from '../../../store/slices/ProgressSlice';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { AutocompleteInput } from '../../reusable/AutoCompleteInput';
+import StatusButton from '../../reusable/StatusButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 // import NewCommonTable from "../../reusable/NewCommonTable";
+import notification from '../../../assets/notification.mp3';
 
 export interface IDateRangeData {
   startDate: Dayjs | null;
@@ -32,25 +33,32 @@ interface CopyState {
 }
 
 const AdminOrders = () => {
+  const audioRef = useRef(null);
   const dispatch = useDispatch();
-  const [dateRangeData, setDateRangeData] = useState<IDateRangeData>({
-    startDate: dayjs().startOf("day").subtract(7, "day"),
-    endDate: dayjs().endOf("day"),
-    pastDate: "last_7_days",
-  });
+  const [dateRangeData, setDateRangeData] =
+    useState <
+    IDateRangeData >
+    {
+      startDate: dayjs().startOf('day').subtract(7, 'day'),
+      endDate: dayjs().endOf('day'),
+      pastDate: 'last_7_days',
+    };
   const [rowsPerPage, setRowsPerPage] = useState(25);
-  const [orders, setOrders] = useState<any>([]);
+  const [orders, setOrders] = useState < any > [];
   const [loading, setLoading] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   // const [isSearchTextAdded, setIsSearchTextAdded] = useState(false);
   const [page, setPage] = useState(1);
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = (useState < HTMLElement) | (null > null);
   const open = Boolean(anchorEl);
-  const [fieldId, setFieldId] = useState("");
-  const [copyState, setCopyState] = useState<CopyState>({
-    value: "",
-    copied: false,
-  });
+  const [fieldId, setFieldId] = useState('');
+  const [copyState, setCopyState] =
+    useState <
+    CopyState >
+    {
+      value: '',
+      copied: false,
+    };
 
   // console.log("dateRangeData", dateRangeData);
 
@@ -64,8 +72,8 @@ const AdminOrders = () => {
     let ob: any = {
       page: _newPage,
       rowsPerPage: rowsPerPage,
-      startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
-      endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
+      startDate: dayjs(dateRangeData.startDate).format('YYYY-MM-DDTHH:mm:ss'),
+      endDate: dayjs(dateRangeData.endDate).format('YYYY-MM-DDTHH:mm:ss'),
     };
     if (searchText) {
       ob = {
@@ -85,8 +93,8 @@ const AdminOrders = () => {
     let ob: any = {
       page: page,
       rowsPerPage: number,
-      startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
-      endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
+      startDate: dayjs(dateRangeData.startDate).format('YYYY-MM-DDTHH:mm:ss'),
+      endDate: dayjs(dateRangeData.endDate).format('YYYY-MM-DDTHH:mm:ss'),
     };
     if (searchText) {
       ob = {
@@ -109,9 +117,9 @@ const AdminOrders = () => {
     const dateObj = includeDate
       ? {
           startDate: dayjs(dateRangeData.startDate).format(
-            "YYYY-MM-DDTHH:mm:ss"
+            'YYYY-MM-DDTHH:mm:ss'
           ),
-          endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
+          endDate: dayjs(dateRangeData.endDate).format('YYYY-MM-DDTHH:mm:ss'),
           search: searchText,
         }
       : {};
@@ -150,14 +158,14 @@ const AdminOrders = () => {
       .catch((err) => {
         toast.success(err?.response?.data?.message);
       });
-    setFieldId("");
+    setFieldId('');
     setAnchorEl(null);
   };
 
   const menuItems = {
     items: [
       {
-        displayName: "Delete",
+        displayName: 'Delete',
         disable: false,
         handlerFunc: handleDelete,
         icon: <DeleteIcon />,
@@ -183,47 +191,47 @@ const AdminOrders = () => {
   const propsData = {
     columns: [
       {
-        label: "Order Id",
+        label: 'Order Id',
         // numeric: false,
       },
       {
-        label: "Products",
+        label: 'Products',
         numeric: false,
       },
       {
-        label: "Customer",
+        label: 'Customer',
         // numeric: false,
       },
       {
-        label: "Address",
+        label: 'Address',
         // numeric: false,
       },
       {
-        label: "Instructions",
+        label: 'Instructions',
         // numeric: false,
       },
       {
-        label: "Order Type",
+        label: 'Order Type',
         // numeric: false,
       },
       {
-        label: "Status",
+        label: 'Status',
         // numeric: false,
       },
       {
-        label: "Amount",
+        label: 'Amount',
         // numeric: false,
       },
       {
-        label: "Created At",
+        label: 'Created At',
         // numeric: false,
       },
       {
-        label: "Updated At",
+        label: 'Updated At',
         // numeric: false,
       },
       {
-        label: "",
+        label: '',
         // numeric: false,
       },
     ],
@@ -239,9 +247,9 @@ const AdminOrders = () => {
     info: orders,
     handleChangePage: handleChangePage,
     handleChangeRowsPerPage: handleChangeRowsPerPage,
-    height: "calc(100vh - 250px)",
-    msg: "No matching Orders",
-    subMsg: "We could not find any Orders matching your search",
+    height: 'calc(100vh - 250px)',
+    msg: 'No matching Orders',
+    subMsg: 'We could not find any Orders matching your search',
     dense: true,
     handleRequestSort: () => {},
     loading,
@@ -253,8 +261,8 @@ const AdminOrders = () => {
     const ob = {
       page: page,
       rowsPerPage: rowsPerPage,
-      startDate: dayjs(dateRangeData.startDate).format("YYYY-MM-DDTHH:mm:ss"),
-      endDate: dayjs(dateRangeData.endDate).format("YYYY-MM-DDTHH:mm:ss"),
+      startDate: dayjs(dateRangeData.startDate).format('YYYY-MM-DDTHH:mm:ss'),
+      endDate: dayjs(dateRangeData.endDate).format('YYYY-MM-DDTHH:mm:ss'),
     };
     if (searchText) {
       const ob1 = {
@@ -270,9 +278,9 @@ const AdminOrders = () => {
   }, [dateRangeData, searchText]);
 
   useEffect(() => {
-    socket.emit("join", "adminRoom");
-    socket.on("orderPlaced", (data) => {
-      toast.success("New Order Placed");
+    socket.emit('join', 'adminRoom');
+    socket.on('orderPlaced', (data) => {
+      toast.success('New Order Placed');
       setOrders((prev: any) => {
         const oldOrders = [...prev.data];
         // console.log("oldOrders", oldOrders);
@@ -284,7 +292,10 @@ const AdminOrders = () => {
             ...data.meta,
             pagination: {
               ...data.meta.pagination,
-              total: prev?.data?.length === 1 ? 1 : prev?.meta?.pagination?.total + 1,
+              total:
+                prev?.data?.length === 1
+                  ? 1
+                  : prev?.meta?.pagination?.total + 1,
             },
             totalSales:
               prev?.meta?.totalSales === undefined
@@ -293,8 +304,23 @@ const AdminOrders = () => {
           },
         };
       });
+      playNotificationSound();
     });
   }, [socket]);
+
+  useEffect(() => {
+    audioRef.current = new Audio(notification);
+    // Optional: preload the sound
+    audioRef.current.load();
+  }, []);
+
+  const playNotificationSound = () => {
+    if (audio.current) {
+      audioRef.current.play().catch((error) => {
+        console.log('Error playing sound', error);
+      });
+    }
+  };
 
   return (
     <Stack gap={1} direction="column">
@@ -345,7 +371,7 @@ const AdminOrders = () => {
           {loading && (
             <Shimmer
               length={propsData?.columns?.length}
-              colsWidth={["60%", "10%", "17%", "12%", "1%"]}
+              colsWidth={['60%', '10%', '17%', '12%', '1%']}
             />
           )}
           {!loading &&
@@ -359,10 +385,10 @@ const AdminOrders = () => {
                   <TableCell>
                     <Stack
                       sx={{
-                        display: "flex",
-                        gap: "0.5rem",
-                        flexDirection: "row",
-                        alignIems: "center",
+                        display: 'flex',
+                        gap: '0.5rem',
+                        flexDirection: 'row',
+                        alignIems: 'center',
                       }}
                     >
                       <CopyToClipboard
@@ -377,8 +403,8 @@ const AdminOrders = () => {
                         <Tooltip
                           title={
                             copyState?.value === order?._id
-                              ? "Copied"
-                              : "Copy To Clipboard"
+                              ? 'Copied'
+                              : 'Copy To Clipboard'
                           }
                         >
                           <ContentCopyIcon />
@@ -397,7 +423,7 @@ const AdminOrders = () => {
                         )
                       )
                     ) : (
-                      <Typography sx={{ textAlign: "center" }}>-</Typography>
+                      <Typography sx={{ textAlign: 'center' }}>-</Typography>
                     )}
                   </TableCell>
                   <TableCell>{order?.user?.name}</TableCell>
@@ -409,8 +435,8 @@ const AdminOrders = () => {
                     <StatusButton order={order} handleApiCall={handleApiCall} />
                   </TableCell>
                   <TableCell>&#8377;{order?.amount}</TableCell>
-                  <TableCell>{dayjs(order?.createdAt).format("LLL")}</TableCell>
-                  <TableCell>{dayjs(order?.updatedAt).format("LLL")}</TableCell>
+                  <TableCell>{dayjs(order?.createdAt).format('LLL')}</TableCell>
+                  <TableCell>{dayjs(order?.updatedAt).format('LLL')}</TableCell>
                   <TableCell>
                     <CommonMenu {...updatedMenuProps} />
                   </TableCell>
