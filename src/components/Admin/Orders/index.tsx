@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Stack, TableCell, TableRow, Tooltip, Typography } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
 import axios from "axios";
@@ -19,6 +19,7 @@ import { AutocompleteInput } from "../../reusable/AutoCompleteInput";
 import StatusButton from "../../reusable/StatusButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 // import NewCommonTable from "../../reusable/NewCommonTable";
+import notification from "../../../assets/notification.mp3";
 
 export interface IDateRangeData {
   startDate: Dayjs | null;
@@ -32,12 +33,14 @@ interface CopyState {
 }
 
 const AdminOrders = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const dispatch = useDispatch();
   const [dateRangeData, setDateRangeData] = useState<IDateRangeData>({
     startDate: dayjs().startOf("day").subtract(7, "day"),
     endDate: dayjs().endOf("day"),
     pastDate: "last_7_days",
   });
+
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [orders, setOrders] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -284,7 +287,10 @@ const AdminOrders = () => {
             ...data.meta,
             pagination: {
               ...data.meta.pagination,
-              total: prev?.data?.length === 1 ? 1 : prev?.meta?.pagination?.total + 1,
+              total:
+                prev?.data?.length === 1
+                  ? 1
+                  : prev?.meta?.pagination?.total + 1,
             },
             totalSales:
               prev?.meta?.totalSales === undefined
@@ -293,9 +299,23 @@ const AdminOrders = () => {
           },
         };
       });
+      playNotificationSound();
     });
   }, [socket]);
 
+  useEffect(() => {
+    audioRef.current = new Audio(notification);
+    // Optional: preload the sound
+    audioRef.current.load();
+  }, []);
+
+  const playNotificationSound = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch((error: unknown) => {
+        console.log("Error playing sound", error);
+      });
+    }
+  };
   return (
     <Stack gap={1} direction="column">
       {/* <Stack alignSelf="flex-end">
