@@ -35,6 +35,7 @@ const AdminProducts = () => {
   const [loading, setLoading] = React.useState(false);
   const [mostLovedState, setMostLovedState] = React.useState({
     title: "",
+    description: "",
     originalPrice: "",
     discountedPrice: "",
     rating: "",
@@ -86,6 +87,7 @@ const AdminProducts = () => {
         // dispatch(setProgress({ progress: 70 }));
         setMostLovedState({
           title: "",
+          description: "",
           originalPrice: "",
           discountedPrice: "",
           rating: "",
@@ -197,6 +199,20 @@ const AdminProducts = () => {
                 return {
                   ...prev,
                   title: e.target.value,
+                };
+              });
+            }}
+          />
+          <TextField
+            autoFocus
+            variant="outlined"
+            label="Description*"
+            value={mostLovedState.description}
+            onChange={(e) => {
+              setMostLovedState((prev: any) => {
+                return {
+                  ...prev,
+                  description: e.target.value,
                 };
               });
             }}

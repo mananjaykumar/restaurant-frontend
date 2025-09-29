@@ -6,7 +6,7 @@ export const ORDER_DETAILS = "/user/order/:id";
 export const PROFILE = "/user/profile";
 export const SEARCH = "/search";
 export const HELP = "/help";
-export const PRODUCT_DETAILS = "/product/:id";
+export const PRODUCT_DETAILS = "/user/product/:id";
 
 // Admin Routes
 export const R_ROOT = "/admin";

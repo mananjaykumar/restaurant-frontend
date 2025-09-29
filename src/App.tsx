@@ -29,6 +29,7 @@ import Orders from "./components/Orders";
 import OrderDetails from "./components/Orders/OrderDetails";
 import Settings from "./components/Admin/Settings";
 import Profile from "./components/Profile";
+import ProductDetails from "./components/ProductDetails";
 
 interface Props {
   children: React.ReactNode;
@@ -170,6 +171,14 @@ function App() {
                 element={
                   <HOC>
                     <Profile />
+                  </HOC>
+                }
+              />
+              <Route
+                path={navLinks.PRODUCT_DETAILS}
+                element={
+                  <HOC>
+                    <ProductDetails />
                   </HOC>
                 }
               />
