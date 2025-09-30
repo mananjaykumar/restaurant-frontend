@@ -248,7 +248,15 @@ const ProductDetails = () => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" mt={10}>
+      <Box
+        sx={{
+          height: "calc(100vh - 190px)",
+          display: "flex",
+          justifyContent: "center",
+          // mt: 10,
+          alignItems: "center",
+        }}
+      >
         <CircularProgress sx={{ color: "#FC8019" }} />
       </Box>
     );
@@ -272,7 +280,9 @@ const ProductDetails = () => {
         spacing={4}
         justifyContent="center"
         alignItems="flex-start"
-        sx={{ textAlign: { xs: "center", md: "left" } }}
+        sx={{
+          textAlign: { xs: "center", md: "left" },
+        }}
       >
         {/* Image */}
         <Grid item xs={12} md={4}>
