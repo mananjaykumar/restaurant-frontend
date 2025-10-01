@@ -135,7 +135,7 @@ const SectionHeader = ({ title, Icon }: ISectionHeader) => {
       //   sx={headerSize}
     >
       <Box display="flex" alignItems="center" gap="0.5rem">
-        {Icon && <Icon color="warning" />}
+        {Icon && <Icon sx={{ color: "#472009" }} /> /* prev-> color="warning"*/}
         <Typography color="text.primary" fontSize="25px" fontWeight="600">
           {title}
         </Typography>

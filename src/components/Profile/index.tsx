@@ -17,6 +17,7 @@ import axios from "axios";
 import { setProgress } from "../../store/slices/ProgressSlice";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -76,7 +77,12 @@ const Profile = () => {
           height: "calc(100vh - 190px)",
         }}
       >
-        <CircularProgress sx={{ color: "#FC8019" }} />
+        <CircularProgress
+          sx={{
+            // color: "#FC8019"
+            color: "#472009",
+          }}
+        />
       </Stack>
     );
   }
@@ -103,7 +109,8 @@ const Profile = () => {
             sx={{
               width: 80,
               height: 80,
-              bgcolor: theme.palette.warning.main,
+              // bgcolor: theme.palette.warning.main,
+              bgcolor: "#472009",
               fontSize: 32,
             }}
           >
@@ -114,11 +121,11 @@ const Profile = () => {
               {user.name}
             </Typography>
             <Stack direction="row" alignItems="center" spacing={1} mt={1}>
-              <PhoneIcon fontSize="small" color="warning" />
+              <PhoneIcon fontSize="small" sx={{ color: "#472009" }} />
               <Typography variant="body1">{user.phone}</Typography>
             </Stack>
             <Stack direction="row" alignItems="center" spacing={1} mt={0.5}>
-              <EmailIcon fontSize="small" color="warning" />
+              <EmailIcon fontSize="small" sx={{ color: "#472009" }} />
               <Typography variant="body1">{user.email}</Typography>
             </Stack>
           </Box>
@@ -135,11 +142,19 @@ const Profile = () => {
                 borderRadius: 2,
               }}
             >
-              <ShoppingCartIcon color="warning" sx={{ fontSize: 40, mb: 1 }} />
+              <ShoppingCartIcon
+                sx={{ fontSize: 40, mb: 1, color: "#472009" }}
+              />
               <Typography variant="h6">Total Orders</Typography>
-              <Typography variant="h4" color="warning" fontWeight="bold">
-                {user.orders}
-              </Typography>
+              <Link to="/user/orders" style={{ textDecoration: "none" }}>
+                <Typography
+                  variant="h4"
+                  sx={{ color: "#472009" }}
+                  fontWeight="bold"
+                >
+                  {user.orders}
+                </Typography>
+              </Link>
             </Paper>
           </Grid>
 

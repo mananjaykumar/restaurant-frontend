@@ -257,7 +257,12 @@ const ProductDetails = () => {
           alignItems: "center",
         }}
       >
-        <CircularProgress sx={{ color: "#FC8019" }} />
+        <CircularProgress
+          sx={{
+            // color: "#FC8019"
+            color: "#472009",
+          }}
+        />
       </Box>
     );
   }
@@ -324,7 +329,12 @@ const ProductDetails = () => {
             alignItems="center"
             mt={1}
           >
-            <Rating value={product.rating} precision={0.1} readOnly />
+            <Rating
+              value={product.rating}
+              precision={0.1}
+              readOnly
+              sx={{ color: "#472009" }}
+            />
             <Typography variant="body2" ml={1}>
               {product.rating.toFixed(1)} / 5
             </Typography>
@@ -385,7 +395,7 @@ const ProductDetails = () => {
                 elevation={1}
                 sx={{
                   p: 2,
-                  borderLeft: "5px solid #FC8019",
+                  borderLeft: "5px solid #472009",
                   borderRadius: 2,
                   mb: 1,
                 }}
@@ -431,6 +441,7 @@ const ProductDetails = () => {
               <Rating
                 value={newRating}
                 onChange={(_, value: any) => setNewRating(value)}
+                sx={{ color: "#472009" }}
               />
               <TextField
                 fullWidth
@@ -447,9 +458,11 @@ const ProductDetails = () => {
                 disabled={submitting}
                 sx={{
                   mt: 2,
-                  backgroundColor: "#FC8019",
+                  // backgroundColor: "#FC8019",
+                  backgroundColor: "#472009",
                   "&:hover": {
-                    backgroundColor: "#FC8019",
+                    // backgroundColor: "#FC8019",
+                    backgroundColor: "#472009",
                   },
                   "&.Mui-disabled": {
                     backgroundColor: "#f3f3f3",

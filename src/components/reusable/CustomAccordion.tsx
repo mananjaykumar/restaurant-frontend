@@ -170,9 +170,11 @@ export default function CustomAccordion(props: any) {
             variant="contained"
             sx={{
               width: "fit-content",
-              backgroundColor: "#FC8019",
+              // backgroundColor: "#FC8019",
+              backgroundColor: "#472009",
               "&:hover": {
-                backgroundColor: "#FC8019",
+                // backgroundColor: "#FC8019",
+                backgroundColor: "#472009",
               },
               "&.Mui-disabled": {
                 backgroundColor: "#f3f3f3",

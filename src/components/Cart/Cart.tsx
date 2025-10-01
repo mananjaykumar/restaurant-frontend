@@ -7,7 +7,7 @@ import {
 // import { createOrder } from "../../Redux/CounterSlice";
 import { useNavigate } from "react-router-dom";
 import * as navLinks from "../../routes/constants";
-import cartImage from "../../assets/cartImage.png"
+import cartImage from "../../assets/cartImage.png";
 
 const Cart = (props: any) => {
   const { cart } = useSelector((state: any) => state.auth.userData);
@@ -71,13 +71,14 @@ const Cart = (props: any) => {
         >
           <Button
             fullWidth
-            color="error"
+            // color="error" // prev here color
             variant="contained"
             sx={{
               fontSize: "0.875rem",
               fontWeight: "600",
               // padding: "6px 16px",
               marginBottom: "12px",
+              backgroundColor: "#472009",
             }}
             onClick={() => {
               // dispatch(createOrder());
