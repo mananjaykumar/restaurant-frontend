@@ -35,7 +35,9 @@ export const CardIncButton = styled(Button)(({ theme }) => ({
   padding: "0.1rem",
   minWidth: "0",
   border: `1px solid ${theme.palette.error.main}`,
-  color: theme.palette.error.main,
+  // color: theme.palette.error.main,
+  color: "#472009",
+  borderColor: "#472009",
   borderRadius: "50%",
 })) as typeof Button;
 
@@ -43,7 +45,9 @@ export const CardDecButton = styled(Button)(({ theme }) => ({
   padding: "0.1rem",
   minWidth: "0",
   border: `1px solid ${theme.palette.error.main}`,
-  color: theme.palette.error.main,
+  // color: theme.palette.error.main,
+  color: "#472009",
+  borderColor: "#472009",
   borderRadius: "50%",
   "&:disabled": {
     border: `1px solid #DADADA`,
@@ -135,7 +139,7 @@ function CartProduct(props: any) {
             onClick={addItemToCart}
           >
             {addItemLoading ? (
-              <CircularProgress size="15px" color="error" />
+              <CircularProgress size="15px" sx={{ color: "#472009" }} />
             ) : (
               <AddOutlinedIcon />
             )}
@@ -151,7 +155,7 @@ function CartProduct(props: any) {
             onClick={removeItemFromCart}
           >
             {removeItemLoading ? (
-              <CircularProgress size="15px" color="error" />
+              <CircularProgress size="15px" sx={{ color: "#472009" }} />
             ) : (
               <RemoveOutlinedIcon />
             )}
@@ -215,7 +219,7 @@ function CartProduct(props: any) {
           onClick={completelyRemoveItemFromCart}
         >
           {completelyRemoveItemLoading ? (
-            <CircularProgress size="15px" color="error" />
+            <CircularProgress size="15px" sx={{ color: "#472009" }} />
           ) : (
             <CloseOutlinedIcon />
           )}

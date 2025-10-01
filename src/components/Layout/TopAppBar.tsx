@@ -270,7 +270,9 @@ function TopAppBar() {
                         fontWeight: 500,
                         textTransform: "capitalize",
                         "&:hover": {
-                          color: "#FC8019",
+                          // color: "#FC8019",
+                          color: "#472009",
+                          fontWeight: "bold",
                           backgroundColor: "#fff",
                         },
                       }}

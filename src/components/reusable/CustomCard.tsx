@@ -41,7 +41,11 @@ const CardAddButton = styled(Button)(({ theme }) => ({
   minWidth: "0",
   width: "25px", // testing
   border: `1px solid ${theme.palette.error.main}`,
-  color: theme.palette.error.main,
+  // color: theme.palette.error.main,
+  borderColor: "#472009",
+  ".MuiSvgIcon-root": {
+    color: "#472009",
+  },
 }));
 
 const CardChip = styled(Chip)(({ theme }) => ({
@@ -140,15 +144,23 @@ const CustomCard = ({ item, index }: ICustomCard) => {
         justifyContent={item.discount ? "space-between" : "flex-end"}
         alignItems="center"
       >
-        {item.discount !== 0 && <CardChip label={`${item.discount}% off`} />}
+        {item.discount !== 0 && (
+          <CardChip
+            label={`${item.discount}% off`}
+            sx={{ backgroundColor: "#472009" }}
+          />
+        )}
         <Checkbox
           sx={{
-            color: "rgba(0, 0, 0, 0.54)",
+            // color: "rgba(0, 0, 0, 0.54)",
+            color: "#472009",
           }}
           checked={Boolean(isLiked)}
           // checked={false}
           icon={<FavoriteBorderIcon fontSize="small" />}
-          checkedIcon={<FavoriteIcon color="error" fontSize="small" />}
+          checkedIcon={
+            <FavoriteIcon sx={{ color: "#472009" }} fontSize="small" />
+          }
           onChange={addItemToWishList}
         />
       </Grid>
@@ -198,10 +210,12 @@ const CustomCard = ({ item, index }: ICustomCard) => {
               value={item.rating}
               readOnly
               size="small"
+              precision={0.1}
+              sx={{ color: "#472009" }}
             />
           </Box>
           <Box display="flex" gap="0.5rem">
-            <Typography sx={{ color: "error.main", fontWeight: "600" }}>
+            <Typography sx={{ color: "#472009", fontWeight: "600" }}> 
               &#8377;{item.discountedPrice}
             </Typography>
             {item.discount !== 0 && (
@@ -221,9 +235,9 @@ const CustomCard = ({ item, index }: ICustomCard) => {
           >
             <CardAddButton onClick={addItemToCart}>
               {addItemLoading ? (
-                <CircularProgress size="15px" color="error" />
+                <CircularProgress size="15px" sx={{ color: "#472009" }} /> // prev -> color="error"
               ) : (
-                <AddIcon fontSize="small" color="error" />
+                <AddIcon fontSize="small" sx={{ color: "#472009" }} />
               )}
             </CardAddButton>
             {quantity !== 0 && (
@@ -231,9 +245,9 @@ const CustomCard = ({ item, index }: ICustomCard) => {
                 <Typography variant="body1">{quantity}</Typography>
                 <CardAddButton onClick={removeItemFromCart}>
                   {removeItemLoading ? (
-                    <CircularProgress size="15px" color="error" />
+                    <CircularProgress size="15px" sx={{ color: "#472009" }} />
                   ) : (
-                    <RemoveIcon fontSize="small" color="error" />
+                    <RemoveIcon fontSize="small" sx={{ color: "#472009" }} />
                   )}
                 </CardAddButton>
               </>

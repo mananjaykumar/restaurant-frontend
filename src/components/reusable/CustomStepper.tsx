@@ -68,12 +68,14 @@ export default function CustomStepper(props: {
     // },
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
-        borderColor: "#FC8019",
+        // borderColor: "#FC8019",
+        borderColor: "#472009",
       },
     },
     [`&.${stepConnectorClasses.completed}`]: {
       [`& .${stepConnectorClasses.line}`]: {
-        borderColor: "#FC8019",
+        // borderColor: "#FC8019",
+        borderColor: "#472009",
       },
     },
     // [`& .${stepConnectorClasses.line}`]: {
@@ -102,11 +104,13 @@ export default function CustomStepper(props: {
     fontWeight: 500,
     ...(ownerState.active && {
       backgroundColor: "#fff",
-      color: "#FC8019",
+      // color: "#FC8019",
+      color: "#472009",
     }),
     ...(ownerState.completed && {
       backgroundColor: "#fff",
-      color: "#FC8019",
+      // color: "#FC8019",
+      color: "#472009",
     }),
   }));
 

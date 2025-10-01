@@ -187,7 +187,12 @@ const OrderDetails = () => {
           height: "calc(100vh - 190px)",
         }}
       >
-        <CircularProgress sx={{ color: "#FC8019" }} />
+        <CircularProgress
+          sx={{
+            // color: "#FC8019"
+            color: "#472009",
+          }}
+        />
       </Stack>
     );
   }
@@ -217,11 +222,14 @@ const OrderDetails = () => {
             navigate(-1);
           }}
           sx={{
-            borderColor: "#FC8019",
-            color: "#FC8019",
+            // borderColor: "#FC8019",
+            // color: "#FC8019",
+            color: "#472009",
             "&:hover": {
-              borderColor: "#FC8019",
-              color: "#FC8019",
+              // borderColor: "#FC8019",
+              borderColor: "#472009",
+              // color: "#FC8019",
+              color: "#472009",
             },
           }}
         >

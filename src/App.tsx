@@ -39,7 +39,7 @@ const HOC = ({ children }: Props) => {
   return (
     <>
       <TopAppBar />
-      <LoadingBar color="#f11946" progress={progress} height={3} />
+      <LoadingBar color="#472009" progress={progress} height={3} />
       {children}
       <Footer />
     </>
