@@ -59,7 +59,11 @@ export default function CustomAccordion(props: any) {
         }}
       >
         <Grid container direction="row" justifyContent="space-between">
-          <Grid item spacing={1}>
+          <Grid
+            item
+            spacing={1}
+            sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+          >
             {item.products.map((product: any) => (
               <Stack>
                 <Stack
@@ -89,7 +93,8 @@ export default function CustomAccordion(props: any) {
                       sx={{
                         fontSize: "12px",
                         fontWeight: "600",
-                        color: "error.main",
+                        // color: "error.main",
+                        color: "#472009",
                       }}
                     >
                       &#8377; {product.quantity * product.item.discountedPrice}
