@@ -147,7 +147,7 @@ export default function Footer() {
         bgcolor: "#472009", // Dark brown
         color: "#FFF8E7", // Cream tone
         py: 4,
-        mt: 6,
+        mt: "auto",
       }}
     >
       <Container maxWidth="lg">
