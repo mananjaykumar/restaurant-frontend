@@ -182,7 +182,7 @@ function TopAppBar() {
                 alt="Topiq"
                 style={{
                   // height: "37px",
-                  height: "47px",
+                  height: "67px",
                   cursor: "pointer",
                 }}
                 onClick={() => navigate(routes.ROOT)}
