@@ -91,7 +91,8 @@ const CheckOut = () => {
                     sx={{
                       fontSize: "14px",
                       fontWeight: "600",
-                      color: "error.main",
+                      // color: "error.main",
+                      color: "#472009"
                     }}
                   >
                     &#8377; {item.quantity * item.product.discountedPrice}
@@ -171,9 +172,11 @@ const CheckOut = () => {
               variant="contained"
               disabled={loading}
               sx={{
-                backgroundColor: "#FC8019",
+                // backgroundColor: "#FC8019",
+                backgroundColor: "#472009",
                 "&:hover": {
-                  backgroundColor: "#FC8019",
+                  // backgroundColor: "#FC8019",
+                  backgroundColor: "#472009",
                 },
                 "&.Mui-disabled": {
                   backgroundColor: "#f3f3f3",

@@ -191,7 +191,8 @@ function CartProduct(props: any) {
             sx={{
               fontSize: "14px",
               fontWeight: "600",
-              color: "error.main",
+              // color: "error.main",
+              color: "#472009"
             }}
           >
             &#8377; {props.quantity * props.item.discountedPrice}
