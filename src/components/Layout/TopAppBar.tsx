@@ -15,9 +15,9 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 // import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import logo from "../../assets/logo.png";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import SupportOutlinedIcon from "@mui/icons-material/SupportOutlined";
+// import SupportOutlinedIcon from "@mui/icons-material/SupportOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
@@ -57,16 +57,16 @@ function TopAppBar() {
   );
 
   const MenuData = [
-    {
-      name: "Search",
-      icon: <SearchIcon />,
-      to: "/search",
-    },
-    {
-      name: "Help",
-      icon: <SupportOutlinedIcon />,
-      to: "/help",
-    },
+    // {
+    //   name: "Search",
+    //   icon: <SearchIcon />,
+    //   to: "/search",
+    // },
+    // {
+    //   name: "Help",
+    //   icon: <SupportOutlinedIcon />,
+    //   to: "/help",
+    // },
     {
       name:
         userData?.token && userData?.role?.includes("user")
@@ -182,7 +182,7 @@ function TopAppBar() {
                 alt="Topiq"
                 style={{
                   // height: "37px",
-                  height: "47px",
+                  height: "67px",
                   cursor: "pointer",
                 }}
                 onClick={() => navigate(routes.ROOT)}

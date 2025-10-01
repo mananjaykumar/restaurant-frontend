@@ -46,7 +46,8 @@ const CardAddButton = styled(Button)(({ theme }) => ({
 
 const CardChip = styled(Chip)(({ theme }) => ({
   backgroundColor: theme.palette.error.main,
-  color: theme.palette.text.error,
+  // color: theme.palette.text.error,
+  color: "white",
   height: "24px",
   fontSize: "10px",
 }));
@@ -151,7 +152,7 @@ const CustomCard = ({ item, index }: ICustomCard) => {
           onChange={addItemToWishList}
         />
       </Grid>
-      <Link to={`/product/${item._id}`}>
+      <Link to={`/user/product/${item._id}`}>
         <CardMedia
           sx={{
             height: "225px",
@@ -177,7 +178,10 @@ const CustomCard = ({ item, index }: ICustomCard) => {
             flexDirection: "column",
           }}
         >
-          <Link to={`/product/${item._id}`}>
+          <Link
+            to={`/user/product/${item._id}`}
+            style={{ textDecoration: "none" }}
+          >
             <Typography
               sx={{
                 fontWeight: 600,
