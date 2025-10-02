@@ -74,7 +74,16 @@ const UsersList = () => {
   };
 
   const propsData = {
-    columns: ["Name", "Email", "Role", "Phone", "Created At", "Updated At", ""],
+    columns: [
+      "Name",
+      "Email",
+      "Role",
+      "Phone",
+      "OTP",
+      "Created At",
+      "Updated At",
+      "",
+    ],
     rowsPerPage: rowsPerPage,
     // info: {
     //   data: users,
@@ -276,6 +285,7 @@ const UsersList = () => {
                     {user?.role.sort().join(",")}
                   </TableCell>
                   <TableCell>{user?.phone}</TableCell>
+                  <TableCell>{user?.phoneOtp}</TableCell>
                   <TableCell>{dayjs(user?.createdAt).format("LLL")}</TableCell>
                   <TableCell>{dayjs(user?.updatedAt).format("LLL")}</TableCell>
                   <TableCell>
