@@ -82,6 +82,8 @@ const Orders = () => {
         // alignItems: "center",
         padding: "10px 25px",
         gap: "2rem",
+        minHeight: "30vh",
+        marginTop: "15x",
         // height: "330px",
         // height: { xs: "220px", sm: "250px" },
       }}
