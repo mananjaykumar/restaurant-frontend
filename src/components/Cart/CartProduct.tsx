@@ -169,6 +169,7 @@ function CartProduct(props: any) {
             style={{
               width: "100%",
               height: "100%",
+              borderRadius: "50%",
             }}
           />
         </Stack>
@@ -192,7 +193,7 @@ function CartProduct(props: any) {
               fontSize: "14px",
               fontWeight: "600",
               // color: "error.main",
-              color: "#472009"
+              color: "#472009",
             }}
           >
             &#8377; {props.quantity * props.item.discountedPrice}

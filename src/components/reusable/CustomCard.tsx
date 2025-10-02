@@ -126,7 +126,7 @@ const CustomCard = ({ item, index }: ICustomCard) => {
   return (
     <Card
       key={item._id ?? index}
-      style={{
+      sx={{
         fontWeight: "600",
         padding: "0.5rem",
         borderRadius: "0.5rem",
@@ -134,6 +134,7 @@ const CustomCard = ({ item, index }: ICustomCard) => {
         boxShadow: " 15px  rgba(40,44,63,.15)",
         transition: "all 250ms ease-in-out",
         height: "386px",
+        width: "250px",
         // "&:hover": {
         //   boxShadow: "2",
         // },
@@ -168,7 +169,8 @@ const CustomCard = ({ item, index }: ICustomCard) => {
         <CardMedia
           sx={{
             height: "225px",
-            width: "250px",
+            // width: "250px",
+            borderRadius: "10%",
             "&:hover": {
               transform: "scale(1.1,1.1)",
               transition: "transform 0.2s",
@@ -215,7 +217,7 @@ const CustomCard = ({ item, index }: ICustomCard) => {
             />
           </Box>
           <Box display="flex" gap="0.5rem">
-            <Typography sx={{ color: "#472009", fontWeight: "600" }}> 
+            <Typography sx={{ color: "#472009", fontWeight: "600" }}>
               &#8377;{item.discountedPrice}
             </Typography>
             {item.discount !== 0 && (

@@ -17,6 +17,7 @@ const SignUp = (props: ISignUp) => {
     phone: "",
     name: "",
     email: "",
+    password: "",
     otp: "",
     _id: "",
   });
@@ -31,6 +32,7 @@ const SignUp = (props: ISignUp) => {
         phone: signUpState.phone,
         name: signUpState.name,
         email: signUpState.email,
+        password: signUpState.password,
       })
       .then((res) => {
         dispatch(setProgress({ progress: 30 }));
@@ -149,30 +151,63 @@ const SignUp = (props: ISignUp) => {
             </Box>
           </Typography>
         </Stack>
+        <TextField
+          variant="outlined"
+          label="Password"
+          type="password"
+          disabled={otpSent}
+          value={signUpState.password}
+          onChange={(e) => {
+            setSignUpState((prev: any) => {
+              return {
+                ...prev,
+                password: e.target.value,
+              };
+            });
+          }}
+        />
         {otpSent && (
-          <TextField
-            variant="outlined"
-            label="OTP*"
-            type="number"
-            value={signUpState.otp}
-            onChange={(e) => {
-              setSignUpState((prev: any) => {
-                return {
-                  ...prev,
-                  otp: e.target.value,
-                };
-              });
-            }}
-          />
+          <Stack>
+            <TextField
+              variant="outlined"
+              label="OTP*"
+              type="number"
+              value={signUpState.otp}
+              onChange={(e) => {
+                setSignUpState((prev: any) => {
+                  return {
+                    ...prev,
+                    otp: e.target.value,
+                  };
+                });
+              }}
+            />
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: "12px",
+                color: "#686b78",
+                marginLeft: "2px",
+                fontWeight: 500,
+              }}
+            >
+              Haven't received OTP, contact +91 9006992491{" "}
+              <Box component="span" sx={{ color: "#FC8019" }}>
+                *
+              </Box>
+            </Typography>
+          </Stack>
         )}
 
         {otpSent ? (
           <Button
             variant="contained"
             sx={{
-              backgroundColor: "#FC8019",
+              // backgroundColor: "#FC8019",
+              backgroundColor: "#472009",
               "&:hover": {
-                backgroundColor: "#FC8019",
+                // backgroundColor: "#FC8019",
+                backgroundColor: "#472009",
               },
               "&.Mui-disabled": {
                 backgroundColor: "#f3f3f3",
@@ -188,9 +223,11 @@ const SignUp = (props: ISignUp) => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "#FC8019",
+                // backgroundColor: "#FC8019",
+                backgroundColor: "#472009",
                 "&:hover": {
-                  backgroundColor: "#FC8019",
+                  // backgroundColor: "#FC8019",
+                  backgroundColor: "#472009",
                 },
                 "&.Mui-disabled": {
                   backgroundColor: "#f3f3f3",

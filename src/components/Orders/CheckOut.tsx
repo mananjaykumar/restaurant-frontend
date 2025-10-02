@@ -53,10 +53,10 @@ const CheckOut = () => {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} mt={2}>
       {cart?.items.length > 0 ? (
         <>
-          <Grid item container lg={12} md={12} sm={12}>
+          <Grid item container lg={12} md={12} sm={12} spacing={2}>
             {cart.items.map((item: any) => (
               <Grid
                 item
@@ -77,6 +77,7 @@ const CheckOut = () => {
                     style={{
                       height: "150px",
                       width: "150px",
+                      borderRadius: '100%'
                     }}
                   />
                 </Grid>
@@ -92,7 +93,7 @@ const CheckOut = () => {
                       fontSize: "14px",
                       fontWeight: "600",
                       // color: "error.main",
-                      color: "#472009"
+                      color: "#472009",
                     }}
                   >
                     &#8377; {item.quantity * item.product.discountedPrice}

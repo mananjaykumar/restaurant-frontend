@@ -32,6 +32,7 @@ import toast from "react-hot-toast";
 import { toggleLoginDrawer } from "../../store/slices/TogglerSlice";
 import Cart from "../Cart/Cart";
 import * as routes from "../../routes/constants";
+import rollImg from "../../assets/roll.avif";
 
 // const pages = ["Products", "Pricing", "Blog"];
 
@@ -179,7 +180,7 @@ function TopAppBar() {
               /> */}
               <img
                 src={logo}
-                alt="Topiq"
+                alt="Khane Khana"
                 style={{
                   // height: "37px",
                   height: "67px",
@@ -218,7 +219,13 @@ function TopAppBar() {
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
                     sx={{
-                      display: { xs: "block", md: "none" },
+                      display: {
+                        xs: "block",
+                        md: "none",
+                        "& .MuiMenu-paper": {
+                          padding: "5px 10px",
+                        },
+                      },
                     }}
                   >
                     {MenuData.map((item, index) => (
@@ -240,7 +247,13 @@ function TopAppBar() {
                           }
                           handleCloseNavMenu();
                         }}
-                        sx={{ gap: "0.5rem" }}
+                        sx={{
+                          gap: "0.5rem",
+                          "&:hover": {
+                            backgroundColor: "#472009",
+                            color: "white",
+                          },
+                        }}
                       >
                         {item.icon}
                         <Typography textAlign="center">{item.name}</Typography>
@@ -306,6 +319,9 @@ function TopAppBar() {
                     //   width: "150px",
                     //   xs: { top: "55px" },
                     // },
+                    "& .MuiMenu-paper": {
+                      padding: "5px 10px",
+                    },
                   }}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
@@ -340,6 +356,11 @@ function TopAppBar() {
                       sx={{
                         gap: "1rem",
                         color: "#3d4152",
+                        height: "40px",
+                        "&:hover": {
+                          backgroundColor: "#472009",
+                          color: "white",
+                        },
                       }}
                     >
                       {setting.icon}
@@ -390,7 +411,7 @@ function TopAppBar() {
           setShowLoginDrawer(false);
           dispatch(toggleLoginDrawer({ open: false }));
         }}
-        imgSrc="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
+        imgSrc={rollImg}
         title="Login"
         width="420px"
         subHeaderComponent={
@@ -418,7 +439,7 @@ function TopAppBar() {
           setShowSignUpDrawer(false);
           dispatch(toggleLoginDrawer({ open: false }));
         }}
-        imgSrc="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
+        imgSrc={rollImg}
         title="Sign Up"
         width="420px"
         subHeaderComponent={
@@ -478,6 +499,10 @@ function TopAppBar() {
               sx={{
                 gap: "1rem",
                 color: "#3d4152",
+                "&:hover": {
+                  backgroundColor: "#472009",
+                  color: "white",
+                },
               }}
             >
               {setting.icon}
