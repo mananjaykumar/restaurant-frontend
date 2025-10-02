@@ -178,7 +178,6 @@ const Login = (props: ILogin) => {
           }}
         />
         <TextField
-          autoFocus
           variant="outlined"
           label="Password*"
           type="password"
