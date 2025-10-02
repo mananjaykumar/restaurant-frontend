@@ -136,7 +136,7 @@ import {
   YouTube,
   Email,
   LocationOn,
-  // Phone,
+  Phone,
 } from "@mui/icons-material";
 import Logo from "../../assets/logo.png"; // adjust path based on your project
 
@@ -236,7 +236,7 @@ export default function Footer() {
             </Box>
 
             {/* Phone */}
-            {/* <Box
+            <Box
               display="flex"
               alignItems="center"
               justifyContent={{ xs: "center", md: "flex-end" }}
@@ -244,11 +244,11 @@ export default function Footer() {
             >
               <Phone sx={{ mr: 1 }} />
               <Typography variant="body2">
-                <Link href="tel:8233101852" color="inherit" underline="hover">
-                  +91 82331 01852
+                <Link href="tel:9006992491" color="inherit" underline="hover">
+                  +91 90069 92491
                 </Link>
               </Typography>
-            </Box> */}
+            </Box>
 
             {/* Location */}
             <Box
