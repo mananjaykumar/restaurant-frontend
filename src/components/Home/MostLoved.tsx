@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
 import { Box, Stack, Typography } from "@mui/material";
 // import BoltIcon from "@mui/icons-material/Bolt";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CustomCarousel from "../reusable/CustomCarousel";
 import CustomCard from "../reusable/CustomCard";
-import toast from "react-hot-toast";
+import { useEffect } from "react";
+// import toast from "react-hot-toast";
 import AOS from "aos";
-import { useDispatch } from "react-redux";
-import { setProgress } from "../../store/slices/ProgressSlice";
+// import { useDispatch } from "react-redux";
+// import { setProgress } from "../../store/slices/ProgressSlice";
 // import SectionHeader from "./SectionHeader";
 
 // const carouselItems = [
@@ -144,10 +145,10 @@ const SectionHeader = ({ title, Icon }: ISectionHeader) => {
   );
 };
 
-const MostLoved = () => {
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
-  const [carouselItems, setCarouselItems] = useState([]);
+const MostLoved = ({ loading, carouselItems }: any) => {
+  // const dispatch = useDispatch();
+  // const [loading, setLoading] = useState(true);
+  // const [carouselItems, setCarouselItems] = useState([]);
   //   useEffect(() => {
   //     const fetchData = async () => {
   //       const result = await axios.get(
@@ -159,29 +160,33 @@ const MostLoved = () => {
   //     fetchData();
   //   }, []);
 
-  useEffect(() => {
-    dispatch(setProgress({ progress: 10 }));
-    AOS.init();
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/home/most-loved`)
-      .then((res) => {
-        dispatch(setProgress({ progress: 30 }));
-        setCarouselItems(res?.data?.data);
-        dispatch(setProgress({ progress: 70 }));
-        // setItems([]);
-        setLoading(false);
-        dispatch(setProgress({ progress: 100 }));
-      })
-      .catch((err) => {
-        toast.error(err?.response?.data?.message);
-        setLoading(false);
-        dispatch(setProgress({ progress: 100 }));
-      });
-  }, []);
+  // useEffect(() => {
+  //   dispatch(setProgress({ progress: 10 }));
+  //   AOS.init();
+  //   axios
+  //     .get(`${import.meta.env.VITE_BACKEND_URL}/api/home/most-loved`)
+  //     .then((res) => {
+  //       dispatch(setProgress({ progress: 30 }));
+  //       setCarouselItems(res?.data?.data);
+  //       dispatch(setProgress({ progress: 70 }));
+  //       // setItems([]);
+  //       setLoading(false);
+  //       dispatch(setProgress({ progress: 100 }));
+  //     })
+  //     .catch((err) => {
+  //       toast.error(err?.response?.data?.message);
+  //       setLoading(false);
+  //       dispatch(setProgress({ progress: 100 }));
+  //     });
+  // }, []);
 
   // if (loading) {
   //   return <>Loding...</>;
   // }
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     // <section className="flash-deals" style={{ margin: "3rem 0 0 0" }}>
     <Stack
