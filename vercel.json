@@ -4,5 +4,12 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "API": "https://restaurant-backend-7086.onrender.com"
+    },
+    "installCommand": "npm install -f",
+    "buildCommand": "npm run build"
+  }
 }
