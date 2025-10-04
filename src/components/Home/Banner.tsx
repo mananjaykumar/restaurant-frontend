@@ -1,8 +1,8 @@
-import React from "react";
+// import React from "react";
 import { Box, Typography, Grid, Stack, Skeleton } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
-import axios from "axios";
-import toast from "react-hot-toast";
+// import axios from "axios";
+// import toast from "react-hot-toast";
 
 // function arrayBufferToBase64(buffer: any) {
 //   var binary = "";
@@ -11,9 +11,9 @@ import toast from "react-hot-toast";
 //   return window.btoa(binary);
 // }
 
-const Banner = () => {
-  const [loading, setLoading] = React.useState(true);
-  const [items, setItems] = React.useState([]);
+const Banner = ({ items, loading }: any) => {
+  // const [loading, setLoading] = React.useState(true);
+  // const [items, setItems] = React.useState([]);
   // const items = [
   //   {
   //     name: "Random Name #1",
@@ -29,19 +29,19 @@ const Banner = () => {
   //   },
   // ];
 
-  React.useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/home/banner`)
-      .then((res) => {
-        setItems(res?.data?.data?.reverse());
-        // setItems([]);
-        setLoading(false);
-      })
-      .catch((err) => {
-        toast.error(err?.response?.data?.message);
-        setLoading(false);
-      });
-  }, []);
+  // React.useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_BACKEND_URL}/api/home/banner`)
+  //     .then((res) => {
+  //       setItems(res?.data?.data?.reverse());
+  //       // setItems([]);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       toast.error(err?.response?.data?.message);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   if (loading) {
     return (
@@ -86,7 +86,7 @@ const Banner = () => {
       }}
     >
       {items?.length > 0
-        ? items.map((item, i) => (
+        ? items.map((item: any, i: number) => (
             <Item key={i} item={item} defaultItems={false} />
           ))
         : [1].map((item, i) => (
