@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm run fetch-home-data && vite",
+    "dev": "vite",
     "fetch-home-data": "node scripts/fetchHomeData.cjs",
     "build": "npm run fetch-home-data && vite build",
     "lint": "eslint .",
