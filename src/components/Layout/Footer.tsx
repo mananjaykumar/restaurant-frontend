@@ -137,6 +137,7 @@ import {
   Email,
   LocationOn,
   Phone,
+  Business,
 } from "@mui/icons-material";
 import Logo from "../../assets/logo.png"; // adjust path based on your project
 
@@ -267,6 +268,16 @@ export default function Footer() {
           <Typography variant="caption" sx={{ color: "#EADBC8" }}>
             © {new Date().getFullYear()} Khane Khana. All Rights Reserved.
           </Typography>
+          <Box
+            display="flex"
+            alignItems="flex-end"
+            justifyContent={{ xs: "center" }}
+          >
+            <Business sx={{ mr: 1 }} />
+            <Typography variant="caption" sx={{ color: "#EADBC8" }}>
+              Since 2023
+            </Typography>
+          </Box>
         </Box>
       </Container>
     </Box>
