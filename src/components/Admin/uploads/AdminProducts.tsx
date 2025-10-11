@@ -67,6 +67,7 @@ const AdminProducts = () => {
           category: mostLovedState.category,
           subCategory: mostLovedState.subCategory,
           mostLoved: mostLovedState.selectedFile,
+          description: mostLovedState.description,
         },
         {
           headers: {
