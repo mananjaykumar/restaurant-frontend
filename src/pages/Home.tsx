@@ -9,6 +9,7 @@ import React from "react";
 // import AOS from "aos";
 import bannerData from "../data/banner.json";
 import mostLovedData from "../data/mostLoved.json";
+import AllProducts from "../components/Home/AllProducts";
 
 const Home = () => {
   // const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const Home = () => {
     >
       <Banner items={bannerData} loading={loading} />
       <MostLoved carouselItems={mostLovedData} loading={loading} />
+      <AllProducts />
     </Stack>
   );
 };

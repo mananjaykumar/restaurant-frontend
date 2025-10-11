@@ -204,7 +204,6 @@ const AdminProducts = () => {
             }}
           />
           <TextField
-            autoFocus
             variant="outlined"
             label="Description*"
             value={mostLovedState.description}

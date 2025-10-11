@@ -121,10 +121,10 @@ const breakPoints = [
 interface ISectionHeader {
   title: string;
   headerSize?: string;
-  Icon: any;
+  Icon?: any;
 }
 
-const SectionHeader = ({ title, Icon }: ISectionHeader) => {
+export const SectionHeader = ({ title, Icon }: ISectionHeader) => {
   return (
     <Box
       display="flex"
