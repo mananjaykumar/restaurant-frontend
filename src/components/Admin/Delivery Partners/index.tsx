@@ -231,10 +231,6 @@ const AdminDeliveryPartners = () => {
   const propsData = {
     columns: [
       {
-        label: "Id",
-        // numeric: false,
-      },
-      {
         label: "Name",
         numeric: false,
       },
@@ -417,7 +413,7 @@ const AdminDeliveryPartners = () => {
               };
               return (
                 <TableRow key={order?._id} sx={{ ...tableBorderStyles }}>
-                  <TableCell>
+                  {/* <TableCell>
                     <Stack
                       sx={{
                         display: "flex",
@@ -447,7 +443,7 @@ const AdminDeliveryPartners = () => {
                       </CopyToClipboard>
                       <Typography>{order?._id}</Typography>
                     </Stack>
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell>{order?.name}</TableCell>
                   <TableCell>
                     <Chip
