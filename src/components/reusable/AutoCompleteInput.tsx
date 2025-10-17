@@ -63,6 +63,7 @@ interface IAutocompleteInputProps {
   placeHolder?: string;
   handlePosnChange?: () => void;
   width?: string;
+  apiUrl: string;
 }
 
 export const AutocompleteInput = (props: IAutocompleteInputProps) => {
@@ -73,6 +74,7 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
     placeHolder,
     handlePosnChange,
     width,
+    apiUrl,
   } = props;
   const classes = useStyles(theme);
   const [searchText, setSearchText] = useState("");
@@ -101,7 +103,7 @@ export const AutocompleteInput = (props: IAutocompleteInputProps) => {
 
   const handleApiCall = () => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/orders/id`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/${apiUrl}`)
       .then((res) => {
         setTimeout(() => {
           setSearchData(res?.data?.data);

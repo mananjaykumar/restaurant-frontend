@@ -18,3 +18,4 @@ export const R_TEST = "/admin/new-table";
 export const R_ORDERS = "/admin/orders";
 export const R_USERS_LIST = "/admin/users-list";
 export const R_SETTINGS = "/admin/settings";
+export const R_DELIVERY_PARTNERS = "/admin/delivery-partners";

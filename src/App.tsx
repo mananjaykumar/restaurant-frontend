@@ -30,6 +30,7 @@ import OrderDetails from "./components/Orders/OrderDetails";
 import Settings from "./components/Admin/Settings";
 import Profile from "./components/Profile";
 import ProductDetails from "./components/ProductDetails";
+import AdminDeliveryPartners from "./components/Admin/Delivery Partners";
 
 interface Props {
   children: React.ReactNode;
@@ -69,6 +70,7 @@ function DynamicTitle() {
       [`${navLinks.R_ADD_CATEGORY}`]: "Add Category",
       [`${navLinks.R_ADD_SUB_CATEGORY}`]: "Add Sub Category",
       [`${navLinks.R_ORDERS}`]: "Orders",
+      [`${navLinks.R_DELIVERY_PARTNERS}`]: "Delivery Partners",
       [`${navLinks.R_USERS_LIST}`]: "Users",
       [`${navLinks.R_SETTINGS}`]: "Settings",
     };
@@ -271,6 +273,21 @@ function App() {
                       }}
                     >
                       <AdminOrders />
+                    </Stack>
+                  </HOCAdmin>
+                }
+              />
+              <Route
+                path={navLinks.R_DELIVERY_PARTNERS}
+                element={
+                  <HOCAdmin>
+                    <Stack
+                      sx={{
+                        padding: "5px 20px",
+                        marginTop: "40px",
+                      }}
+                    >
+                      <AdminDeliveryPartners />
                     </Stack>
                   </HOCAdmin>
                 }

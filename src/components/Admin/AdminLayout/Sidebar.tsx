@@ -1064,6 +1064,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import * as navLinks from "../../../routes/constants";
 import { AppBar } from "./AppBar";
 import LoadingBar from "react-top-loading-bar";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 // import css from "../../css/modules/sidebarMain.module.scss";
 
 const drawerWidth = 240;
@@ -1363,10 +1364,18 @@ export default function Sidebar({ children }: ISidebar) {
     {
       label: "Orders",
       icon: <ReorderOutlinedIcon sx={{ color: "#ffffff" }} />,
-      items: menuItems2,
+      items: [],
       collapsable: false,
       collapseOpen: false,
       link: navLinks.R_ORDERS,
+    },
+    {
+      label: "Delivery Partners",
+      icon: <DeliveryDiningIcon sx={{ color: "#ffffff" }} />,
+      items: [],
+      collapsable: false,
+      collapseOpen: false,
+      link: navLinks.R_DELIVERY_PARTNERS,
     },
   ]);
 

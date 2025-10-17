@@ -339,6 +339,7 @@ const AdminOrders = () => {
             onClear={() => {}}
             attributes={[]}
             width="300px"
+            apiUrl="api/admin/orders/id"
           />
         </Stack>
         <Stack>
