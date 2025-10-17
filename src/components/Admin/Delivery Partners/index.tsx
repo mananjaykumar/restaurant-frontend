@@ -499,7 +499,7 @@ const AdminDeliveryPartners = () => {
                                   }}
                                 >
                                   <Typography>
-                                    <b>Name: </b>
+                                    <b>Address: </b>
                                     {address?.addressUrl}
                                   </Typography>
                                   <Typography>
