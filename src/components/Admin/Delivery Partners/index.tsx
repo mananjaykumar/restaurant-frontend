@@ -497,14 +497,20 @@ const AdminDeliveryPartners = () => {
                                     padding: "0.5rem",
                                     width: "100%",
                                   }}
-                                  >
+                                >
                                   <Typography>
                                     <b>Customer Name: </b>
                                     {address?.customerName}
                                   </Typography>
                                   <Typography>
                                     <b>Address: </b>
-                                    {address?.addressUrl}
+                                    <a
+                                      href={address?.addressUrl}
+                                      target="_blank"
+                                      style={{ textDecoration: "none" }}
+                                    >
+                                      {address?.addressUrl}
+                                    </a>
                                   </Typography>
                                   <Typography>
                                     <b>Food Preference: </b>
