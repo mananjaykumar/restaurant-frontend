@@ -520,6 +520,10 @@ const AdminDeliveryPartners = () => {
                                     <b>Customer Mobile Number: </b>
                                     {address?.customerMobileNumber}
                                   </Typography>
+                                  <Typography>
+                                    <b>Added On: </b>
+                                    {dayjs(address?.createdAt).format("LLL")}
+                                  </Typography>
                                 </Stack>
                               </Stack>
                             );
