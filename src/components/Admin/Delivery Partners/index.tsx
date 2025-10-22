@@ -288,8 +288,8 @@ const AdminDeliveryPartners = () => {
     handleChangePage: handleChangePage,
     handleChangeRowsPerPage: handleChangeRowsPerPage,
     height: "calc(100vh - 250px)",
-    msg: "No matching Orders",
-    subMsg: "We could not find any Orders matching your search",
+    msg: "No matching Partners",
+    subMsg: "We could not find any Partners matching your search",
     dense: true,
     handleRequestSort: () => {},
     loading,
@@ -455,7 +455,7 @@ const AdminDeliveryPartners = () => {
                   </TableCell>
                   <TableCell>{order?.phone}</TableCell>
                   <TableCell>{order?.role?.toLocaleUpperCase()}</TableCell>
-                  <TableCell>{order?.assignedMess?.join(", ")}</TableCell>
+                  <TableCell>{order?.assignedMess[0]?.name}</TableCell>
                   <TableCell>
                     {order?.phoneOtp ? order?.phoneOtp : "-"}
                   </TableCell>
@@ -493,9 +493,13 @@ const AdminDeliveryPartners = () => {
                                     display: "flex",
                                     flexDirection: "column",
                                     gap: "0.5rem",
-                                    backgroundColor: "#F0DBA5",
+                                    // backgroundColor: "#F0DBA5",
+                                    background: "linear-gradient(to right, #0a192f, #1467c6)",
+                                    color: "white",
                                     padding: "0.5rem",
                                     width: "100%",
+                                    height: "100px",
+                                    overflow: "auto",
                                   }}
                                 >
                                   <Typography>
@@ -507,7 +511,7 @@ const AdminDeliveryPartners = () => {
                                     <a
                                       href={address?.addressUrl}
                                       target="_blank"
-                                      style={{ textDecoration: "none" }}
+                                      style={{ textDecoration: "none", color: "white" }}
                                     >
                                       {address?.addressUrl}
                                     </a>
