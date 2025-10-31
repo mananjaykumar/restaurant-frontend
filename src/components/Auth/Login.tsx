@@ -184,7 +184,7 @@ const Login = (props: ILogin) => {
           // disabled={otpSent}
           value={loginState.password}
           onChange={(e) => {
-            if (e.target.value.toString().length <= 10) {
+            if (e.target.value.toString().length <= 100) {
               setLoginState((prev) => {
                 return {
                   ...prev,
